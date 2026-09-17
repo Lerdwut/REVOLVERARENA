@@ -1,6 +1,6 @@
 # Fusion and UI Labs workflow
 
-This guide covers the reusable Fusion UI layer and the UI Labs storybook workflow for RevolverArena. The current HUD, lobby, scoreboard, settings, transition, and kill-feed controllers remain runtime-built under `StarterPlayerScripts/UI`; this workflow adds a side-by-side component and preview layer for new UI work.
+This guide covers the reusable Fusion UI layer, the single Fusion-owned runtime UI root, and the UI Labs storybook workflow for RevolverArena. Runtime HUD, lobby, scoreboard, settings, transition, kill-feed, and wanted-marker presentation is composed by `StarterPlayerScripts/UI/UIController.client.luau`; the gameplay and settings contracts it observes remain outside the UI layer.
 
 ## Toolchain
 
@@ -64,7 +64,23 @@ src/ReplicatedStorage/UI/
 └── RevolverArena.storybook.luau        storybook grouping module
 ```
 
-`ReplicatedStorage.UI.Components` may be used by future client runtime controllers. `ReplicatedStorage.UI.Stories` exists for visual development and must not be required by gameplay entry points.
+`ReplicatedStorage.UI.Components` contains pure components used by runtime feature modules and stories. `ReplicatedStorage.UI.Stories` exists for visual development and must not be required by gameplay entry points. The runtime side is organized as follows:
+
+```text
+src/StarterPlayer/StarterPlayerScripts/UI/
+├── UIController.client.luau             single runtime entry point and root Fusion scope
+└── Runtime/                             scoped runtime feature modules and state adapters
+```
+
+Only `UIController.client.luau` has a client entry suffix; files under `Runtime/` are modules and never initialize themselves.
+
+## Runtime ownership and state flow
+
+`UIController.client.luau` creates one Fusion scope and passes it to every feature mount. `RuntimeState.luau` observes public player attributes, the combat and kill-feed remotes, roll timing, and the existing `SettingsStore`. Feature modules convert those values into `Computed`, `Tween`, `Spring`, `ForPairs`, and `ForValues` bindings.
+
+The adapter keeps `SettingsStore.Get*`, `Set`, `Reset`, `Changed`, `OpenChanged`, `IsOpen`, and `IsInputBlocked` stable for camera, weapon, audio, and effects. Settings controls write through the store; they do not maintain a second source of truth. Remote payload validation and authoritative gameplay decisions remain outside the UI layer.
+
+All instances, observers, input connections, player/character listeners, and transient UI timers belong to the root scope. Feature-specific child scopes are used for dynamic wanted markers and collection entries. Unmounting the root destroys the generated UI and disconnects the associated work.
 
 ## Component rules
 
@@ -90,11 +106,16 @@ StatusCard(scope, {
 	streak = Fusion.UsedAs<number>,
 	wanted = Fusion.UsedAs<boolean>,
 	gameState = Fusion.UsedAs<string>,
+	variant = "card" | "runtime"?,
+	showState = boolean?,
+	showWanted = boolean?,
 	position = UDim2?,
 	anchorPoint = Vector2?,
 	size = UDim2?,
 }) -> Frame
 ```
+
+The default `card` variant is the grouped UI Labs presentation. The `runtime` variant is a transparent full-screen composition that preserves the legacy ammo and streak placements and hides the grouped-only status rows unless explicitly enabled.
 
 Numeric display values are clamped for presentation: capacity is at least one, ammo is non-negative and no greater than capacity, and streak is non-negative. This does not change authoritative gameplay state.
 
@@ -134,7 +155,7 @@ The sample story uses `UILabs.Slider` for ammo, capacity, and streak, `UILabs.Bo
 | Status | Lobby, arena, dead, wanted, and clear states have the intended text and color |
 | Layout | Default and compact viewport sizes have no overlap, clipping, or unreadable text |
 | Lifecycle | Story reload and unmount remove old instances and reactive work |
-| Runtime | Existing HUD controllers still own their current `PlayerGui` interfaces and inputs |
+| Runtime | The single Fusion root owns the current `PlayerGui` interfaces and inputs without duplicate ScreenGuis or changed gameplay contracts |
 
 ## Validation commands
 

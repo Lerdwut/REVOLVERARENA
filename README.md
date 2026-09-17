@@ -11,7 +11,7 @@ RevolverArena is a compact Roblox arena shooter built around a server-authoritat
 - Lobby-to-arena entry, respawn-to-lobby flow, safe spawn selection, and spawn protection
 - Server-validated firing, ammo, reload, combat roll, raycasts, hit confirmation, kills, deaths, streaks, and wanted state
 - First-person camera, viewmodel animation, recoil, sway, bob, muzzle flash, tracers, and feedback effects
-- Runtime HUD, ammo and roll status, kill feed, scoreboard, lobby prompt, transitions, and local settings
+- Fusion-owned runtime HUD, ammo and roll status, kill feed, scoreboard, lobby prompt, transitions, and local settings
 - Rojo-managed western arena, Lighting, and the `StarterPack.Revolver` Tool
 
 ### In progress
@@ -38,7 +38,7 @@ rojo build default.project.json -o REVOLVERARENA.rbxlx
 rojo serve default.project.json
 ```
 
-Open `REVOLVERARENA.rbxlx` in Roblox Studio, open the Rojo 7 plugin, and connect to the running server. Install the [UI Labs plugin](https://create.roblox.com/store/asset/14293316215/UI-Labs) once, then follow [SETUP.md](docs/SETUP.md) and the [Fusion/UI Labs workflow](docs/ui-workflow.md) for Studio instructions and troubleshooting.
+Open `REVOLVERARENA.rbxlx` in Roblox Studio, open the Rojo 7 plugin, and connect to the running server. Install the [UI Labs plugin](https://create.roblox.com/store/asset/14293316215/UI-Labs) once, then follow [SETUP.md](docs/SETUP.md), the [Fusion/UI Labs workflow](docs/ui-workflow.md), and the [architecture guide](docs/architecture.md) for runtime UI ownership and troubleshooting.
 
 ## Collaboration model
 
@@ -58,7 +58,7 @@ src/ReplicatedStorage/Shared/            Cross-boundary constants and game-state
 src/ReplicatedStorage/UI/                Pure Fusion components, theme tokens, and UI Labs stories
 src/ServerScriptService/Combat/          Server weapon, reload, and hit validation
 src/ServerScriptService/Game/            Arena lifecycle and game-mode state
-src/StarterPlayer/StarterPlayerScripts/  Client controllers, shared helpers, UI, and viewmodel
+src/StarterPlayer/StarterPlayerScripts/  Client controllers, shared helpers, Fusion UI root/modules, and viewmodel
 src/starterpack/Revolver.rbxmx           Rojo-managed gameplay Tool
 src/workspace/Arena.model.json           Rojo-managed arena, lobby, and spawn markers
 tools/                                   Asset-generation utilities

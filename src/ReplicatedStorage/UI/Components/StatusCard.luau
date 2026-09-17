@@ -14,19 +14,27 @@ export type StatusCardProps = {
 	streak: Fusion.UsedAs<number>,
 	wanted: Fusion.UsedAs<boolean>,
 	gameState: Fusion.UsedAs<string>,
+	variant: ("card" | "runtime")?,
+	showState: boolean?,
+	showWanted: boolean?,
 	position: UDim2?,
 	anchorPoint: Vector2?,
 	size: UDim2?,
 }
 
 local function StatusCard(scope: Scope, props: StatusCardProps): Frame
+	local isRuntime = props.variant == "runtime"
 	local safeCapacity = scope:Computed(function(use)
 		return math.max(1, math.floor(use(props.capacity)))
 	end)
 
+	local rawAmmo = scope:Computed(function(use)
+		return math.floor(use(props.ammo))
+	end)
+
 	local safeAmmo = scope:Computed(function(use)
 		local capacity = use(safeCapacity)
-		local ammo = math.max(0, math.floor(use(props.ammo)))
+		local ammo = math.max(0, use(rawAmmo))
 		return math.min(ammo, capacity)
 	end)
 
@@ -35,6 +43,9 @@ local function StatusCard(scope: Scope, props: StatusCardProps): Frame
 	end)
 
 	local ammoText = scope:Computed(function(use)
+		if use(rawAmmo) < 0 then
+			return string.format("-- / %d", use(safeCapacity))
+		end
 		return string.format("%d / %d", use(safeAmmo), use(safeCapacity))
 	end)
 
@@ -58,112 +69,150 @@ local function StatusCard(scope: Scope, props: StatusCardProps): Frame
 		return if use(props.wanted) then Theme.Colors.Danger else Theme.Colors.Success
 	end)
 
+	local visible = scope:Computed(function(use)
+		return not isRuntime or use(props.gameState) == "Arena"
+	end)
+	local defaultPosition = if isRuntime then UDim2.fromScale(0, 0) else UDim2.new(1, -32, 1, -28)
+	local defaultSize = if isRuntime then UDim2.fromScale(1, 1) else Theme.Sizes.StatusCard
+
+	local children = if isRuntime then {
+		scope:New "TextLabel" {
+			Name = "Ammo",
+			AnchorPoint = Vector2.new(1, 1),
+			Position = UDim2.new(1, -32, 1, -26),
+			Size = UDim2.fromOffset(180, 42),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Bold,
+			Text = ammoText,
+			TextColor3 = Color3.new(1, 1, 1),
+			TextStrokeTransparency = 0.5,
+			TextSize = 28,
+			TextXAlignment = Enum.TextXAlignment.Right,
+		},
+		scope:New "TextLabel" {
+			Name = "KillStreak",
+			AnchorPoint = Vector2.new(1, 0),
+			Position = UDim2.new(1, -32, 0, 65),
+			Size = UDim2.fromOffset(220, 34),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Bold,
+			Text = streakText,
+			TextColor3 = Theme.Colors.Accent,
+			TextStrokeTransparency = 0.5,
+			TextSize = 22,
+			TextXAlignment = Enum.TextXAlignment.Right,
+		},
+	} else {
+		scope:New "UICorner" {
+			CornerRadius = UDim.new(0, 8),
+		},
+		scope:New "UIStroke" {
+			Color = Theme.Colors.Border,
+			Thickness = 2,
+			Transparency = 0.15,
+		},
+		scope:New "TextLabel" {
+			Name = "Title",
+			Position = UDim2.fromOffset(14, 10),
+			Size = UDim2.new(1, -28, 0, 22),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Bold,
+			Text = "COMBAT STATUS",
+			TextColor3 = Theme.Colors.Accent,
+			TextSize = 15,
+			TextXAlignment = Enum.TextXAlignment.Left,
+		},
+		scope:New "TextLabel" {
+			Name = "State",
+			Position = UDim2.new(0, 14, 0, 34),
+			Size = UDim2.new(0.5, -18, 0, 20),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Semibold,
+			Text = stateText,
+			TextColor3 = Theme.Colors.TextMuted,
+			TextSize = 12,
+			TextTruncate = Enum.TextTruncate.AtEnd,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			Visible = props.showState ~= false,
+		},
+		scope:New "TextLabel" {
+			Name = "WantedStatus",
+			Position = UDim2.new(0.5, 4, 0, 34),
+			Size = UDim2.new(0.5, -18, 0, 20),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Bold,
+			Text = wantedText,
+			TextColor3 = wantedColor,
+			TextSize = 12,
+			TextXAlignment = Enum.TextXAlignment.Right,
+			Visible = props.showWanted ~= false,
+		},
+		scope:New "Frame" {
+			Name = "Divider",
+			Position = UDim2.fromOffset(14, 60),
+			Size = UDim2.new(1, -28, 0, 1),
+			BackgroundColor3 = Theme.Colors.Border,
+			BackgroundTransparency = 0.45,
+			BorderSizePixel = 0,
+		},
+		scope:New "TextLabel" {
+			Name = "AmmoLabel",
+			Position = UDim2.fromOffset(14, 72),
+			Size = UDim2.new(0.5, -18, 0, 18),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Regular,
+			Text = "AMMO",
+			TextColor3 = Theme.Colors.TextMuted,
+			TextSize = 11,
+			TextXAlignment = Enum.TextXAlignment.Left,
+		},
+		scope:New "TextLabel" {
+			Name = "AmmoValue",
+			Position = UDim2.new(0, 14, 0, 88),
+			Size = UDim2.new(0.5, -18, 0, 26),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Bold,
+			Text = ammoText,
+			TextColor3 = Theme.Colors.Text,
+			TextSize = 20,
+			TextXAlignment = Enum.TextXAlignment.Left,
+		},
+		scope:New "TextLabel" {
+			Name = "StreakLabel",
+			Position = UDim2.new(0.5, 4, 0, 72),
+			Size = UDim2.new(0.5, -18, 0, 18),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Regular,
+			Text = "STREAK",
+			TextColor3 = Theme.Colors.TextMuted,
+			TextSize = 11,
+			TextXAlignment = Enum.TextXAlignment.Right,
+		},
+		scope:New "TextLabel" {
+			Name = "StreakValue",
+			Position = UDim2.new(0.5, 4, 0, 88),
+			Size = UDim2.new(0.5, -18, 0, 26),
+			BackgroundTransparency = 1,
+			Font = Theme.Fonts.Bold,
+			Text = streakText,
+			TextColor3 = Theme.Colors.Accent,
+			TextSize = 18,
+			TextXAlignment = Enum.TextXAlignment.Right,
+		},
+	}
+
 	local root = scope:New "Frame" {
 		Name = "StatusCard",
 		Parent = props.parent,
 		AnchorPoint = props.anchorPoint or Vector2.new(1, 1),
-		Position = props.position or UDim2.new(1, -32, 1, -28),
-		Size = props.size or Theme.Sizes.StatusCard,
+		Position = props.position or defaultPosition,
+		Size = props.size or defaultSize,
 		BackgroundColor3 = Theme.Colors.Surface,
-		BackgroundTransparency = 0.08,
+		BackgroundTransparency = if isRuntime then 1 else 0.08,
 		BorderSizePixel = 0,
-		ClipsDescendants = true,
-		[ Fusion.Children ] = {
-			scope:New "UICorner" {
-				CornerRadius = UDim.new(0, 8),
-			},
-			scope:New "UIStroke" {
-				Color = Theme.Colors.Border,
-				Thickness = 2,
-				Transparency = 0.15,
-			},
-			scope:New "TextLabel" {
-				Name = "Title",
-				Position = UDim2.fromOffset(14, 10),
-				Size = UDim2.new(1, -28, 0, 22),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Bold,
-				Text = "COMBAT STATUS",
-				TextColor3 = Theme.Colors.Accent,
-				TextSize = 15,
-				TextXAlignment = Enum.TextXAlignment.Left,
-			},
-			scope:New "TextLabel" {
-				Name = "State",
-				Position = UDim2.new(0, 14, 0, 34),
-				Size = UDim2.new(0.5, -18, 0, 20),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Semibold,
-				Text = stateText,
-				TextColor3 = Theme.Colors.TextMuted,
-				TextSize = 12,
-				TextTruncate = Enum.TextTruncate.AtEnd,
-				TextXAlignment = Enum.TextXAlignment.Left,
-			},
-			scope:New "TextLabel" {
-				Name = "WantedStatus",
-				Position = UDim2.new(0.5, 4, 0, 34),
-				Size = UDim2.new(0.5, -18, 0, 20),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Bold,
-				Text = wantedText,
-				TextColor3 = wantedColor,
-				TextSize = 12,
-				TextXAlignment = Enum.TextXAlignment.Right,
-			},
-			scope:New "Frame" {
-				Name = "Divider",
-				Position = UDim2.fromOffset(14, 60),
-				Size = UDim2.new(1, -28, 0, 1),
-				BackgroundColor3 = Theme.Colors.Border,
-				BackgroundTransparency = 0.45,
-				BorderSizePixel = 0,
-			},
-			scope:New "TextLabel" {
-				Name = "AmmoLabel",
-				Position = UDim2.fromOffset(14, 72),
-				Size = UDim2.new(0.5, -18, 0, 18),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Regular,
-				Text = "AMMO",
-				TextColor3 = Theme.Colors.TextMuted,
-				TextSize = 11,
-				TextXAlignment = Enum.TextXAlignment.Left,
-			},
-			scope:New "TextLabel" {
-				Name = "AmmoValue",
-				Position = UDim2.new(0, 14, 0, 88),
-				Size = UDim2.new(0.5, -18, 0, 26),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Bold,
-				Text = ammoText,
-				TextColor3 = Theme.Colors.Text,
-				TextSize = 20,
-				TextXAlignment = Enum.TextXAlignment.Left,
-			},
-			scope:New "TextLabel" {
-				Name = "StreakLabel",
-				Position = UDim2.new(0.5, 4, 0, 72),
-				Size = UDim2.new(0.5, -18, 0, 18),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Regular,
-				Text = "STREAK",
-				TextColor3 = Theme.Colors.TextMuted,
-				TextSize = 11,
-				TextXAlignment = Enum.TextXAlignment.Right,
-			},
-			scope:New "TextLabel" {
-				Name = "StreakValue",
-				Position = UDim2.new(0.5, 4, 0, 88),
-				Size = UDim2.new(0.5, -18, 0, 26),
-				BackgroundTransparency = 1,
-				Font = Theme.Fonts.Bold,
-				Text = streakText,
-				TextColor3 = Theme.Colors.Accent,
-				TextSize = 18,
-				TextXAlignment = Enum.TextXAlignment.Right,
-			},
-		},
+		ClipsDescendants = not isRuntime,
+		Visible = visible,
+		[Fusion.Children] = children,
 	}
 
 	return root
