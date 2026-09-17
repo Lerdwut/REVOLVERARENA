@@ -1,30 +1,59 @@
-# RevolverArena signature revolver
+# Revolver asset and import notes
 
-`stylized_low_poly_revolver.gltf` is the production low-poly mesh export. It has
-seven separate named nodes: Handle, Frame, Barrel, Cylinder, Hammer, Trigger,
-and FrontSight. It uses +Y up, -Z forward, and Roblox-stud-sized geometry.
-Materials are simple gunmetal, lighter steel, and brown wood; no textures.
-The export is scaled to 80% of the initial hero blockout for better Roblox
-first-person readability and grip proportions.
+This directory contains the authoring, interchange, generated reference, and QA files for the signature RevolverArena weapon. It is not mapped into Roblox Studio by Rojo.
 
-The weapon origin is the center of the grip. Cylinder and Hammer have their own
-local pivots in the glTF node hierarchy (both animate around +X). Scale and
-rotation are already baked into the geometry; node translations are retained
-only to place these animation pivots.
+## Asset inventory
 
-QA renders: `revolver_first_person.png`, `revolver_side.png`,
-`revolver_perspective.png`, and `revolver_front.png`. The contact sheet is
-`revolver_review.png`. Mesh counts and world bounds are in
-`stylized_low_poly_revolver_manifest.json`.
+- `Revolver_Final.blend`: editable Blender source
+- `Revolver_Final.fbx`: interchange export
+- `stylized_low_poly_revolver.gltf`: generated low-poly reference with baked scale and rotation
+- `stylized_low_poly_revolver_manifest.json`: node, mesh, and bounds metadata for the generated glTF
+- `revolver_*.png`, `qa_revolver_*.png`, and `qa/`: review renders
+- `../../tools/generate_low_poly_revolver.py`: generates the stylized glTF, manifest, and its review images
 
-The Rojo-managed `src/starterpack/Revolver.rbxmx` is a gameplay-ready Part
-approximation of the same silhouette. It remains directly visible in Studio
-while Rojo is connected and preserves Handle, BarrelTip, CylinderMotor,
-HammerMotor, and welds for the current scripts.
+Blender backup files such as `.blend1` are ignored and must not be committed.
 
-To replace its Parts with the imported mesh later, use Studio's 3D Importer for
-the glTF, then keep the imported MeshParts inside the Revolver Tool. Preserve
-the Handle and BarrelTip gameplay reference parts, weld the static objects, and
-use Motor6Ds at the Cylinder and Hammer pivots. Set the visual MeshParts to
-CanCollide=false, CanQuery=false, CanTouch=false, and Massless=true. Test the
-Tool in multiplayer before removing the Part approximation.
+## Current Roblox Tool contract
+
+The live Rojo-managed Tool is `src/starterpack/Revolver.rbxmx`. It currently contains:
+
+- `Handle`
+- visual MeshParts including `Frame`, `Barrel`, `Cylinder`, `Hammer`, `Trigger`, `Grip`, `FrontSight`, `EjectorRod`, and `CylinderRelease`
+- a `Muzzle` attachment under `Barrel`
+- `CylinderMotor`, `HammerMotor`, and `TriggerMotor`
+- welds for static visual parts
+
+Code discovers those names at runtime. Do not rename or remove them without coordinating with Gameplay / Backend and updating every consumer.
+
+The client still contains a `BarrelTip` fallback for older Tool layouts, but the current authoritative muzzle reference is the `Muzzle` attachment. New asset work should preserve the attachment.
+
+## Importing a new visual revision
+
+1. Work from the approved Blender source and export FBX or glTF with transforms applied.
+2. In Studio, use the 3D Importer and inspect scale, orientation, normals, materials, and pivots.
+3. Place imported visual geometry inside a copy of the `Revolver` Tool.
+4. Preserve `Handle`, `Muzzle`, and the three named Motor6Ds.
+5. Weld static visual parts. Attach animated parts through their intended Motor6D and verify each pivot.
+6. Set visual geometry to `CanCollide = false`, `CanQuery = false`, `CanTouch = false`, and `Massless = true` where appropriate.
+7. Capture the approved hierarchy back into `src/starterpack/Revolver.rbxmx`.
+8. Rebuild the project from disk and reconnect Rojo to prove the tracked file reproduces the Tool.
+9. Test equip, first-person display, third-person display, fire, empty, reload, cylinder motion, hammer motion, trigger motion, roll, death, and respawn.
+10. Update review renders and this file when the contract changes.
+
+Do not treat a local Studio place or a published place as the only copy of the imported hierarchy.
+
+## Generated low-poly reference
+
+The generated glTF uses +Y up and -Z forward, with the weapon origin centered on the grip. Cylinder and hammer nodes retain local pivot translations; other rotation and scale are baked into vertex positions. The generator's gameplay scale is 80 percent of its original hero blockout.
+
+To regenerate only that reference set:
+
+```powershell
+python tools/generate_low_poly_revolver.py
+```
+
+On macOS, use `python3` if needed. This script does not update `Revolver_Final.blend`, `Revolver_Final.fbx`, or `src/starterpack/Revolver.rbxmx`.
+
+## Cloud assets and licensing
+
+If a Studio import creates Roblox mesh or texture asset IDs, confirm that development and publishing accounts can use them. Record the source, license, uploader, and any required IDs in the pull request. Do not commit or upload third-party content without permission.

@@ -1,75 +1,148 @@
 # RevolverArena architecture
 
-RevolverArena uses a server-authoritative combat model with client-side presentation and prediction.
+RevolverArena uses a server-authoritative combat model with client-side input, prediction, camera work, UI, and presentation.
 
-The core rule is:
+> The client requests. The server validates and mutates authoritative state. Clients present the replicated result.
 
-> The client requests, the server validates, and the client presents.
-
-## Runtime flow
-
-### Client
+## Rojo DataModel
 
 ```text
-Player input
-  -> Controllers/WeaponController
-     -> RemoteEvent request
-     -> Viewmodel/WeaponAnimation state
-     -> Viewmodel/WeaponViewmodel geometry
-     -> Viewmodel/WeaponEffects audio and VFX
-  -> UI controllers observe attributes and feedback remotes
+ReplicatedStorage
+├── Config                         <- src/ReplicatedStorage/Config
+├── Shared                         <- src/ReplicatedStorage/Shared
+└── RevolverRemotes                <- created at runtime by WeaponService
+    ├── FireRevolver
+    ├── ReloadRevolver
+    ├── RequestCombatRoll
+    ├── WeaponEffects
+    ├── CombatFeedback
+    └── KillFeed
+
+ServerScriptService
+├── Combat                         <- src/ServerScriptService/Combat
+└── Game                           <- src/ServerScriptService/Game
+
+StarterPlayer
+└── StarterPlayerScripts
+    ├── Controllers                <- input and camera integration
+    ├── Shared                     <- client settings and audio routing
+    ├── UI                         <- runtime-built PlayerGui interfaces
+    └── Viewmodel                  <- weapon model, animation, and effects
+
+StarterPack
+└── Revolver                       <- src/starterpack/Revolver.rbxmx
+
+Workspace
+└── Arena                          <- src/workspace/Arena.model.json
+    ├── Environment
+    ├── Lobby
+    └── Spawns
+
+Lighting                           <- properties and effects in default.project.json
 ```
 
-`WeaponController.client.luau` is the only owner of the weapon render-step connection. The viewmodel modules do not connect to `RenderStepped` themselves; they receive state from the controller and return or apply presentation data.
+There is no `StarterGui` mapping. UI scripts create their `ScreenGui` instances at runtime under each player's `PlayerGui`.
 
-UI is currently created at runtime under `PlayerGui`. It remains code-built to preserve the existing visuals and lifecycle. No empty `StarterGui` hierarchy was added just to mirror a target diagram.
+## Component responsibilities
+
+### Shared
+
+| Component | Responsibility |
+| --- | --- |
+| `Shared/Constants.luau` | Canonical remote, attribute, and cross-boundary instance names |
+| `Shared/GameState.luau` | `Lobby`, `EnteringArena`, `Arena`, and `Dead` states plus the arena-state helper |
+| `Config/WeaponConfig.luau` | Authoritative ammo, cadence, range, reload, and roll values |
+| `Config/GameConfig.luau` | Respawn, entry, spawn protection, spawn scoring, and arena bounds |
+| `Config/WeaponPresentationConfig.luau` | Client-only offsets, animation timing, recoil, VFX, and audio presentation |
+
+Authoritative values must not be copied into client-only modules. Presentation values must not become server validation rules.
 
 ### Server
 
+| Component | Responsibility |
+| --- | --- |
+| `Combat/WeaponService.server.luau` | Creates remotes, validates fire/reload/roll requests, owns roll execution, and broadcasts weapon effects |
+| `Combat/HitService.luau` | Validates ray input and arena bounds, performs server raycasts, identifies valid humanoid targets, and applies hits |
+| `Combat/ReloadService.luau` | Owns ammo and reload state, replicated player attributes, cancellation tokens, and reload completion |
+| `Game/ArenaService.server.luau` | Lobby placement, arena entry, spawn scoring, spawn protection, death state, and respawn-to-lobby flow |
+| `Game/GameModeService.server.luau` | Leaderstats kills/deaths, kill streaks, wanted state, combat feedback, and kill-feed publication |
+
+### Client
+
+| Component | Responsibility |
+| --- | --- |
+| `Controllers/WeaponController.client.luau` | Weapon input, local prediction, remote requests, remote effect reconciliation, and the weapon render-step integration point |
+| `Controllers/CameraController.client.luau` | Lobby/arena camera mode and sensitivity |
+| `Shared/SettingsStore.luau` | Session-local settings and input-blocked state; no persistence |
+| `Shared/GameAudio.luau` | Client sound groups and volume updates |
+| `UI/HUDController.client.luau` | HUD, feedback, wanted markers, roll display, and kill-feed composition |
+| Other `UI/` controllers | Lobby hint, scoreboard, settings, and transition presentation |
+| `Viewmodel/WeaponAnimation.luau` | Equip, fire, reload, empty, movement, and roll animation state |
+| `Viewmodel/WeaponViewmodel.luau` | Local cloned weapon and arms, visibility, and per-frame pose application |
+| `Viewmodel/WeaponEffects.luau` | Muzzle flashes, tracers, and weapon audio |
+
+`WeaponController.client.luau` is the single owner of the weapon viewmodel render-step connection. Keep the viewmodel modules event-driven and stateful rather than adding independent render loops.
+
+## Client-to-server combat flow
+
 ```text
-RemoteEvent request
-  -> Combat/WeaponService
-     -> player, state, cadence, and equipped-tool checks
-     -> Combat/HitService ray and target validation
-     -> Combat/ReloadService authoritative ammo/reload state
-  -> authoritative attributes and game state
-  -> result/effect RemoteEvents
-  -> client presentation
+input
+  -> WeaponController checks local UI/state gates
+  -> local presentation predicts fire, reload, empty, or roll
+  -> RemoteEvent request
+  -> WeaponService validates player, character, state, equipment, cadence, and request data
+  -> HitService / ReloadService / server roll logic
+  -> authoritative attributes and damage
+  -> server effect or feedback RemoteEvent
+  -> WeaponController and UI controllers reconcile and present
 ```
 
-`WeaponService.server.luau` creates `ReplicatedStorage.RevolverRemotes` at runtime. The folder and event names are intentionally unchanged:
+Local prediction improves responsiveness but never spends authoritative ammo, applies damage, grants a kill, completes a reload, or approves a roll.
 
-- `FireRevolver`
-- `ReloadRevolver`
-- `RequestCombatRoll`
-- `WeaponEffects`
-- `CombatFeedback`
-- `KillFeed`
+## Remote contracts
 
-`GameModeService.server.luau` owns kills, deaths, streaks, wanted state, and kill-feed publication. `ArenaService.server.luau` owns lobby placement, arena entry, safe combat spawn selection, spawn protection, death state, and return-to-lobby placement.
+All remotes live in the runtime-created `ReplicatedStorage.RevolverRemotes` folder. Names are centralized in `Shared/Constants.luau`.
+
+| Remote | Direction | Current payload and purpose |
+| --- | --- | --- |
+| `FireRevolver` | Client -> server | `origin: Vector3, direction: Vector3`; requests a shot |
+| `ReloadRevolver` | Client -> server | No payload; requests a reload |
+| `RequestCombatRoll` | Client -> server | No payload; requests a roll using server-observed movement/facing |
+| `WeaponEffects` | Server -> clients | Tagged effects: `Shot`, `Reload`, or `Empty` plus actor and effect positions when applicable |
+| `CombatFeedback` | Server -> clients | Tagged feedback: `Hit`, `Kill`, `Death`, `Milestone`, or `StreakEnded` |
+| `KillFeed` | Server -> clients | Killer and victim display names |
+
+There are no `RemoteFunction` contracts. When changing a remote name or payload, update the producer, every consumer, `Constants.luau`, and this table in the same pull request.
+
+## Authoritative replicated state
+
+The server exposes player state through attributes named in `Constants.luau`:
+
+- `RevolverGameState`
+- `RevolverAmmo`
+- `RevolverReloading`
+- `RevolverRolling`
+- `RevolverRollReadyAt`
+- `RevolverKillStreak`
+- `RevolverWanted`
+
+`RevolverKillerUserId` and `RevolverDeathProcessed` are server-side death-processing markers on humanoids. UI should observe public player attributes and server feedback rather than infer authoritative state from local animation.
 
 ## Lobby and arena lifecycle
 
 1. A joining or respawning player is placed at a deterministic lobby spawn.
-2. The server sets `RevolverGameState` to `Lobby`, applies invisible lobby protection, disables/equips no weapon, and shows lobby UI on the client.
-3. The lobby `EnterPrompt` moves the player to `EnteringArena` for the existing transition interval.
-4. `ArenaService` chooses a combat spawn using enemy distance, line of sight, and recent-spawn reuse scoring.
-5. A successful placement sets state to `Arena`, applies the existing short spawn protection, resets ammo, and enables/equips the revolver.
-6. Fire, reload, and roll requests are accepted only when server state and validation allow them.
-7. Death changes state to `Dead`. Roblox respawn creates a new character, which is returned to `Lobby`; arena re-entry starts a fresh combat lifecycle.
+2. The server sets state to `Lobby`, applies lobby protection, and keeps combat unavailable.
+3. The lobby `EnterPrompt` validates distance and begins `EnteringArena`.
+4. `ArenaService` scores combat markers using enemy distance, line of sight, and recent reuse.
+5. Successful placement sets state to `Arena`, applies short spawn protection, resets ammo, and makes the revolver available.
+6. Fire, reload, and roll requests are accepted only after server validation.
+7. Death sets state to `Dead`; Roblox respawn produces a new character that returns to `Lobby`.
 
-## Shared state and configuration
+## Studio, source assets, and runtime objects
 
-- `ReplicatedStorage/Shared/Constants.luau` is the single source for remote, attribute, and cross-boundary instance names.
-- `ReplicatedStorage/Shared/GameState.luau` defines the lobby/arena states.
-- `ReplicatedStorage/Config/WeaponConfig.luau` contains authoritative weapon and roll values used by both client and server.
-- `ReplicatedStorage/Config/GameConfig.luau` contains arena lifecycle, spawn, and combat-bound values.
-- `ReplicatedStorage/Config/WeaponPresentationConfig.luau` contains presentation-only offsets, animation timing, recoil, sway, VFX, and audio tuning.
+- `src/workspace/Arena.model.json`, `src/starterpack/Revolver.rbxmx`, and the Lighting section of `default.project.json` are Git/Rojo source.
+- `assets/revolver/` contains Blender, FBX, glTF, manifest, and QA source/reference files. It is not a Rojo DataModel path.
+- `ReplicatedStorage.RevolverRemotes`, PlayerGui UI, leaderstats, player attributes, temporary force fields, tracers, and viewmodels are runtime-created. Do not hand-author them in Studio.
+- There is no tracked Terrain data and no persistent player-data or inventory layer.
 
-Authoritative values must not be copied into a client-only module. Presentation-only changes must not be used as server validation rules.
-
-## Studio-managed assets
-
-The source revolver files remain in `assets/revolver/`, including `Revolver_Final.blend` and `Revolver_Final.fbx`. The Rojo-managed `src/starterpack/Revolver.rbxmx` remains the gameplay Tool and preserves the names used by code: `Handle`, `Muzzle`, `CylinderMotor`, `HammerMotor`, and `TriggerMotor`.
-
-The arena model remains in `src/workspace/Arena.model.json`. Studio-only imports should stay outside `src` unless the current import pipeline explicitly requires a Rojo-managed instance.
+See [ROBLOX_STUDIO.md](ROBLOX_STUDIO.md) before modifying map geometry, the Tool hierarchy, or imported assets.
