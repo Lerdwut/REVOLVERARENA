@@ -12,6 +12,8 @@ Thumbs.db
 /REVOLVERARENA.rbxlx
 /sourcemap.json
 /build/
+/Packages/
+/DevPackages/
 
 # Logs / temp
 *.log

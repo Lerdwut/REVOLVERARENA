@@ -5,10 +5,10 @@ Thank you for contributing. This repository is organized for a three-person team
 ## Before you start
 
 1. Complete [SETUP.md](SETUP.md).
-2. Read [ARCHITECTURE.md](ARCHITECTURE.md) and [OWNERSHIP.md](OWNERSHIP.md).
+2. Read [architecture.md](architecture.md) and [ownership.md](ownership.md).
 3. Pull current `main`.
 4. Tell the relevant owner before changing a shared contract or hard-to-merge asset.
-5. Create a focused branch as described in [WORKFLOW.md](WORKFLOW.md).
+5. Create a focused branch as described in [workflow.md](workflow.md).
 
 ## Luau conventions
 

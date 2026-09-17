@@ -1,6 +1,6 @@
 # RevolverArena setup
 
-This guide takes a new teammate from a clean computer to a local Roblox Studio session connected to the repository. The project currently pins Rojo 7.7.0 in both `rokit.toml` and `aftman.toml`; Rokit is the documented team path.
+This guide takes a new teammate from a clean computer to a local Roblox Studio session connected to the repository. The project pins Rojo 7.7.0 and Wally 0.3.2 in both `rokit.toml` and `aftman.toml`; Rokit is the documented team path. Wally resolves shared Fusion 0.3.0 and development-only UI Labs 2.4.2 packages.
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ This guide takes a new teammate from a clean computer to a local Roblox Studio s
 - [Rokit](https://github.com/rojo-rbx/rokit), which installs the project-pinned Rojo CLI
 - Permission to publish only if your role requires publishing; local development does not require publish access
 
-The project does not currently use Wally, npm, a database, or environment secrets.
+The project does not use npm, a database, or environment secrets.
 
 ## Windows
 
@@ -44,13 +44,15 @@ rokit --version
 git clone https://github.com/Lerdwut/REVOLVERARENA.git
 cd REVOLVERARENA
 rokit install
+wally install
 rojo --version
 ```
 
-`rojo --version` should report `Rojo 7.7.0`. Review `rokit.toml` before trusting tools. If Rokit asks for explicit trust:
+`rojo --version` should report `Rojo 7.7.0`, and the lockfile-backed Wally install should create ignored `Packages/` and `DevPackages/` folders. Review `rokit.toml` before trusting tools. If Rokit asks for explicit trust:
 
 ```powershell
 rokit trust rojo-rbx/rojo
+rokit trust UpliftGames/wally
 rokit install
 ```
 
@@ -60,7 +62,7 @@ rokit install
 rojo plugin install
 ```
 
-Restart Roblox Studio if it was open. The Rojo plugin should appear on the Plugins toolbar.
+Run this with the repository's pinned Rojo CLI; it overwrites an older plugin with the matching version. Restart Roblox Studio if it was open. The Rojo plugin should appear on the Plugins toolbar.
 
 ## macOS
 
@@ -94,13 +96,15 @@ rokit --version
 git clone https://github.com/Lerdwut/REVOLVERARENA.git
 cd REVOLVERARENA
 rokit install
+wally install
 rojo --version
 ```
 
-`rojo --version` should report `Rojo 7.7.0`. If prompted, review `rokit.toml`, then trust and install the pinned tool:
+`rojo --version` should report `Rojo 7.7.0`, and the lockfile-backed Wally install should create ignored `Packages/` and `DevPackages/` folders. If prompted, review `rokit.toml`, then trust and install the pinned tools:
 
 ```bash
 rokit trust rojo-rbx/rojo
+rokit trust UpliftGames/wally
 rokit install
 ```
 

@@ -74,7 +74,7 @@ For a shared change:
 2. Identify every producer and consumer.
 3. Agree on landing order if multiple branches are involved.
 4. Include reviewers from every affected role.
-5. Update [ARCHITECTURE.md](ARCHITECTURE.md) or [ROBLOX_STUDIO.md](ROBLOX_STUDIO.md) when the contract or source-of-truth boundary changes.
+5. Update [architecture.md](architecture.md) or [ROBLOX_STUDIO.md](ROBLOX_STUDIO.md) when the contract or source-of-truth boundary changes.
 
 ## Review expectations
 

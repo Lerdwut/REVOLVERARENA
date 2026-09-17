@@ -72,7 +72,7 @@ Every pull request should include:
 - Any remote, attribute, configuration, Tool hierarchy, or Rojo mapping changes
 - Known limitations or follow-up work
 
-At least one teammate reviews each pull request. The primary owner listed in [OWNERSHIP.md](OWNERSHIP.md) should review changes in their area. Shared contracts require review from each affected role.
+At least one teammate reviews each pull request. The primary owner listed in [ownership.md](ownership.md) should review changes in their area. Shared contracts require review from each affected role.
 
 The repository currently has no checked-in CI workflow, so local build and Studio validation are required evidence rather than optional safeguards.
 
