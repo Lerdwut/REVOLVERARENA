@@ -1,0 +1,125 @@
+{
+  "name": "REVOLVERARENA",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Shared": {
+        "$path": "src/ReplicatedStorage/Shared"
+      },
+      "Config": {
+        "$path": "src/ReplicatedStorage/Config"
+      }
+    },
+
+    "ServerScriptService": {
+      "Combat": {
+        "$path": "src/ServerScriptService/Combat"
+      },
+      "Game": {
+        "$path": "src/ServerScriptService/Game"
+      }
+    },
+
+    "StarterPlayer": {
+      "$properties": {
+        "CameraMode": "Classic"
+      },
+      "StarterPlayerScripts": {
+        "Controllers": {
+          "$path": "src/StarterPlayer/StarterPlayerScripts/Controllers"
+        },
+        "Shared": {
+          "$path": "src/StarterPlayer/StarterPlayerScripts/Shared"
+        },
+        "UI": {
+          "$path": "src/StarterPlayer/StarterPlayerScripts/UI"
+        },
+        "Viewmodel": {
+          "$path": "src/StarterPlayer/StarterPlayerScripts/Viewmodel"
+        }
+      }
+    },
+
+    "StarterPack": {
+      "Revolver": {
+        "$path": "src/starterpack/Revolver.rbxmx"
+      }
+    },
+
+    "Workspace": {
+      "$properties": {
+        "FilteringEnabled": true
+      },
+      "Arena": {
+        "$path": "src/workspace/Arena.model.json"
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "Ambient": [
+          0.28,
+          0.22,
+          0.18
+        ],
+        "Brightness": 2.2,
+        "ClockTime": 15,
+        "EnvironmentDiffuseScale": 0.35,
+        "EnvironmentSpecularScale": 0.2,
+        "GlobalShadows": true,
+        "OutdoorAmbient": [
+          0.48,
+          0.4,
+          0.32
+        ],
+        "Outlines": false,
+        "ShadowSoftness": 0.35,
+        "Technology": "Future"
+      },
+      "WesternAtmosphere": {
+        "$className": "Atmosphere",
+        "$properties": {
+          "Color": [
+            0.78,
+            0.68,
+            0.56
+          ],
+          "Decay": [
+            0.38,
+            0.28,
+            0.2
+          ],
+          "Density": 0.24,
+          "Glare": 0.08,
+          "Haze": 1.1,
+          "Offset": 0.08
+        }
+      },
+      "WesternColorGrade": {
+        "$className": "ColorCorrectionEffect",
+        "$properties": {
+          "Brightness": 0.025,
+          "Contrast": 0.08,
+          "Saturation": -0.04,
+          "TintColor": [
+            1,
+            0.91,
+            0.8
+          ]
+        }
+      },
+      "SoftSunRays": {
+        "$className": "SunRaysEffect",
+        "$properties": {
+          "Intensity": 0.035,
+          "Spread": 0.72
+        }
+      }
+    },
+    "SoundService": {
+      "$properties": {
+        "RespectFilteringEnabled": true
+      }
+    }
+  }
+}

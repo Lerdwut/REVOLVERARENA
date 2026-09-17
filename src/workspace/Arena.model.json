@@ -1,0 +1,5606 @@
+{
+  "ClassName": "Model",
+  "Children": [
+    {
+      "Name": "Environment",
+      "ClassName": "Model",
+      "Children": [
+        {
+          "Name": "DustGround",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.58,
+              0.4,
+              0.22
+            ],
+            "Material": "Sand",
+            "Position": [
+              0,
+              0,
+              0
+            ],
+            "Size": [
+              140,
+              2,
+              96
+            ]
+          }
+        },
+        {
+          "Name": "MainStreet",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "Sand",
+            "Position": [
+              0,
+              1.04,
+              0
+            ],
+            "Size": [
+              62,
+              0.08,
+              90
+            ]
+          }
+        },
+        {
+          "Name": "WestBoardwalk",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -34.5,
+              1.3,
+              0
+            ],
+            "Size": [
+              7,
+              0.6,
+              88
+            ]
+          }
+        },
+        {
+          "Name": "EastBoardwalk",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              34.5,
+              1.3,
+              0
+            ],
+            "Size": [
+              7,
+              0.6,
+              88
+            ]
+          }
+        },
+        {
+          "Name": "NorthCanyon",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              0,
+              7,
+              -47
+            ],
+            "Size": [
+              140,
+              12,
+              2
+            ]
+          }
+        },
+        {
+          "Name": "SouthCanyon",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              0,
+              7,
+              47
+            ],
+            "Size": [
+              140,
+              12,
+              2
+            ]
+          }
+        },
+        {
+          "Name": "WestCanyon",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              -69,
+              7,
+              0
+            ],
+            "Size": [
+              2,
+              12,
+              96
+            ]
+          }
+        },
+        {
+          "Name": "EastCanyon",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              69,
+              7,
+              0
+            ],
+            "Size": [
+              2,
+              12,
+              96
+            ]
+          }
+        },
+        {
+          "Name": "NorthStreetGateWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              -25,
+              4,
+              -43
+            ],
+            "Size": [
+              18,
+              6,
+              3
+            ]
+          }
+        },
+        {
+          "Name": "NorthStreetGateEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              25,
+              4,
+              -43
+            ],
+            "Size": [
+              18,
+              6,
+              3
+            ]
+          }
+        },
+        {
+          "Name": "SouthStreetGateWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              -25,
+              4,
+              43
+            ],
+            "Size": [
+              18,
+              6,
+              3
+            ]
+          }
+        },
+        {
+          "Name": "SouthStreetGateEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              25,
+              4,
+              43
+            ],
+            "Size": [
+              18,
+              6,
+              3
+            ]
+          }
+        },
+        {
+          "Name": "ArenaBoundaryNorth",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              0,
+              28,
+              -46
+            ],
+            "Size": [
+              140,
+              54,
+              2
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "ArenaBoundarySouth",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              0,
+              28,
+              46
+            ],
+            "Size": [
+              140,
+              54,
+              2
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "ArenaBoundaryWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -68,
+              28,
+              0
+            ],
+            "Size": [
+              2,
+              54,
+              96
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "ArenaBoundaryEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              68,
+              28,
+              0
+            ],
+            "Size": [
+              2,
+              54,
+              96
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Lobby",
+      "ClassName": "Model",
+      "Children": [
+        {
+          "Name": "LobbyPlatform",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              0,
+              0,
+              -66
+            ],
+            "Size": [
+              56,
+              2,
+              30
+            ]
+          }
+        },
+        {
+          "Name": "LobbyBridge",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              0,
+              1.25,
+              -53
+            ],
+            "Size": [
+              20,
+              0.5,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "StationBody",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.16,
+              0.29,
+              0.34
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              0,
+              7,
+              -77
+            ],
+            "Size": [
+              40,
+              12,
+              8
+            ]
+          }
+        },
+        {
+          "Name": "StationRoof",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              13.5,
+              -77
+            ],
+            "Size": [
+              44,
+              1,
+              10
+            ]
+          }
+        },
+        {
+          "Name": "StationPorch",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              0,
+              1.35,
+              -72
+            ],
+            "Size": [
+              42,
+              0.7,
+              6
+            ]
+          }
+        },
+        {
+          "Name": "StationAwning",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              8.5,
+              -72.5
+            ],
+            "Size": [
+              42,
+              0.7,
+              6
+            ]
+          }
+        },
+        {
+          "Name": "StationPostWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -18,
+              4.8,
+              -71
+            ],
+            "Size": [
+              0.6,
+              7,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "StationPostMidWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -6,
+              4.8,
+              -71
+            ],
+            "Size": [
+              0.6,
+              7,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "StationPostMidEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              6,
+              4.8,
+              -71
+            ],
+            "Size": [
+              0.6,
+              7,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "StationPostEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              18,
+              4.8,
+              -71
+            ],
+            "Size": [
+              0.6,
+              7,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "StationSign",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              11.4,
+              -72.2
+            ],
+            "Size": [
+              16,
+              3.2,
+              0.5
+            ]
+          }
+        },
+        {
+          "Name": "GatePostWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -10.5,
+              5,
+              -51
+            ],
+            "Size": [
+              1.2,
+              8,
+              1.2
+            ]
+          }
+        },
+        {
+          "Name": "GatePostEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              10.5,
+              5,
+              -51
+            ],
+            "Size": [
+              1.2,
+              8,
+              1.2
+            ]
+          }
+        },
+        {
+          "Name": "GateHeader",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              8.5,
+              -51
+            ],
+            "Size": [
+              22,
+              1.4,
+              1.4
+            ]
+          }
+        },
+        {
+          "Name": "GateBadge",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.37,
+              0.14,
+              0.09
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              10.1,
+              -51
+            ],
+            "Size": [
+              8,
+              2.2,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "GateDoor",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              4.4,
+              -50.5
+            ],
+            "Size": [
+              9,
+              7.5,
+              1
+            ]
+          }
+        },
+        {
+          "Name": "BenchWestSeat",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              -15,
+              2.2,
+              -62
+            ],
+            "Size": [
+              8,
+              0.6,
+              2
+            ]
+          }
+        },
+        {
+          "Name": "BenchWestBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "Wood",
+            "Position": [
+              -15,
+              3.3,
+              -63
+            ],
+            "Size": [
+              8,
+              2.6,
+              0.5
+            ]
+          }
+        },
+        {
+          "Name": "BenchEastSeat",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              15,
+              2.2,
+              -62
+            ],
+            "Size": [
+              8,
+              0.6,
+              2
+            ]
+          }
+        },
+        {
+          "Name": "BenchEastBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "Wood",
+            "Position": [
+              15,
+              3.3,
+              -63
+            ],
+            "Size": [
+              8,
+              2.6,
+              0.5
+            ]
+          }
+        },
+        {
+          "Name": "WeaponRack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -20,
+              4.0,
+              -73
+            ],
+            "Size": [
+              5,
+              5,
+              1
+            ]
+          }
+        },
+        {
+          "Name": "PracticeBoard",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              20,
+              4.5,
+              -73
+            ],
+            "Size": [
+              6,
+              6,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "LobbyBarrelWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -23,
+              2.8,
+              -56
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "LobbyBarrelEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              23,
+              2.8,
+              -56
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "ArenaEntrance",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "EntryPedestal",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "Wood",
+                "Position": [
+                  0,
+                  2.55,
+                  -53.5
+                ],
+                "Size": [
+                  4.8,
+                  3,
+                  1.2
+                ]
+              },
+              "Children": [
+                {
+                  "Name": "EnterPrompt",
+                  "ClassName": "ProximityPrompt",
+                  "Properties": {
+                    "ActionText": "Enter Arena",
+                    "ObjectText": "Quick Draw Gate",
+                    "HoldDuration": 0,
+                    "KeyboardKeyCode": "F",
+                    "GamepadKeyCode": "ButtonX",
+                    "MaxActivationDistance": 10,
+                    "RequiresLineOfSight": false
+                  }
+                }
+              ]
+            },
+            {
+              "Name": "EntryGoldRail",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.69,
+                  0.5,
+                  0.29
+                ],
+                "Material": "Metal",
+                "Position": [
+                  0,
+                  4.1,
+                  -53.7
+                ],
+                "Size": [
+                  5.2,
+                  0.22,
+                  0.28
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SettingsAccess",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "SettingsBoard",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  20,
+                  3.25,
+                  -70
+                ],
+                "Size": [
+                  5.5,
+                  4.5,
+                  0.65
+                ]
+              },
+              "Children": [
+                {
+                  "Name": "SettingsPrompt",
+                  "ClassName": "ProximityPrompt",
+                  "Properties": {
+                    "ActionText": "Open Settings",
+                    "ObjectText": "Town Settings",
+                    "HoldDuration": 0,
+                    "KeyboardKeyCode": "G",
+                    "GamepadKeyCode": "ButtonX",
+                    "MaxActivationDistance": 9,
+                    "RequiresLineOfSight": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LobbySpawn01",
+          "ClassName": "SpawnLocation",
+          "Properties": {
+            "AllowTeamChangeOnTouch": false,
+            "Anchored": true,
+            "CanCollide": false,
+            "CanQuery": false,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Duration": 0,
+            "Enabled": true,
+            "Material": "Sand",
+            "Neutral": true,
+            "Position": [
+              -16,
+              1.1,
+              -66
+            ],
+            "Size": [
+              7,
+              1,
+              7
+            ],
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "LobbySpawn02",
+          "ClassName": "SpawnLocation",
+          "Properties": {
+            "AllowTeamChangeOnTouch": false,
+            "Anchored": true,
+            "CanCollide": false,
+            "CanQuery": false,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Duration": 0,
+            "Enabled": true,
+            "Material": "Sand",
+            "Neutral": true,
+            "Position": [
+              -8,
+              1.1,
+              -61
+            ],
+            "Size": [
+              7,
+              1,
+              7
+            ],
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "LobbySpawn03",
+          "ClassName": "SpawnLocation",
+          "Properties": {
+            "AllowTeamChangeOnTouch": false,
+            "Anchored": true,
+            "CanCollide": false,
+            "CanQuery": false,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Duration": 0,
+            "Enabled": true,
+            "Material": "Sand",
+            "Neutral": true,
+            "Position": [
+              0,
+              1.1,
+              -67
+            ],
+            "Size": [
+              7,
+              1,
+              7
+            ],
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "LobbySpawn04",
+          "ClassName": "SpawnLocation",
+          "Properties": {
+            "AllowTeamChangeOnTouch": false,
+            "Anchored": true,
+            "CanCollide": false,
+            "CanQuery": false,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Duration": 0,
+            "Enabled": true,
+            "Material": "Sand",
+            "Neutral": true,
+            "Position": [
+              8,
+              1.1,
+              -61
+            ],
+            "Size": [
+              7,
+              1,
+              7
+            ],
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "LobbySpawn05",
+          "ClassName": "SpawnLocation",
+          "Properties": {
+            "AllowTeamChangeOnTouch": false,
+            "Anchored": true,
+            "CanCollide": false,
+            "CanQuery": false,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Duration": 0,
+            "Enabled": true,
+            "Material": "Sand",
+            "Neutral": true,
+            "Position": [
+              16,
+              1.1,
+              -66
+            ],
+            "Size": [
+              7,
+              1,
+              7
+            ],
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "LobbySpawn06",
+          "ClassName": "SpawnLocation",
+          "Properties": {
+            "AllowTeamChangeOnTouch": false,
+            "Anchored": true,
+            "CanCollide": false,
+            "CanQuery": false,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Duration": 0,
+            "Enabled": true,
+            "Material": "Sand",
+            "Neutral": true,
+            "Position": [
+              0,
+              1.1,
+              -57
+            ],
+            "Size": [
+              7,
+              1,
+              7
+            ],
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnZoneFloor",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "Sandstone",
+            "Position": [
+              0,
+              1.05,
+              -63
+            ],
+            "Size": [
+              44,
+              0.1,
+              17
+            ]
+          }
+        },
+        {
+          "Name": "LobbyBoundaryWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -28,
+              27,
+              -66
+            ],
+            "Size": [
+              2,
+              52,
+              34
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "LobbyBoundaryEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              28,
+              27,
+              -66
+            ],
+            "Size": [
+              2,
+              52,
+              34
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "LobbyBoundaryBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              0,
+              27,
+              -82
+            ],
+            "Size": [
+              58,
+              52,
+              2
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "LobbyBoundaryFront",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              0,
+              27,
+              -49.5
+            ],
+            "Size": [
+              58,
+              52,
+              2
+            ],
+            "Transparency": 1,
+            "CanCollide": true,
+            "CanQuery": false,
+            "CanTouch": false
+          }
+        },
+        {
+          "Name": "SideRail-26A",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              -26,
+              2.4,
+              -59
+            ],
+            "Size": [
+              0.5,
+              0.5,
+              14
+            ]
+          }
+        },
+        {
+          "Name": "SideRail-26B",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              -26,
+              3.7,
+              -59
+            ],
+            "Size": [
+              0.5,
+              0.5,
+              14
+            ]
+          }
+        },
+        {
+          "Name": "SidePost-26North",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -26,
+              2.9,
+              -65
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "SidePost-26South",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -26,
+              2.9,
+              -53
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "SideRail26A",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              26,
+              2.4,
+              -59
+            ],
+            "Size": [
+              0.5,
+              0.5,
+              14
+            ]
+          }
+        },
+        {
+          "Name": "SideRail26B",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              26,
+              3.7,
+              -59
+            ],
+            "Size": [
+              0.5,
+              0.5,
+              14
+            ]
+          }
+        },
+        {
+          "Name": "SidePost26North",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              26,
+              2.9,
+              -65
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "SidePost26South",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              26,
+              2.9,
+              -53
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "LobbyLanternWest",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -10,
+                  4.75,
+                  -53
+                ],
+                "Size": [
+                  0.45,
+                  7.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -10,
+                  8.1,
+                  -53.65
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  -10,
+                  7.5,
+                  -54.15
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LobbyLanternEast",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  10,
+                  4.75,
+                  -53
+                ],
+                "Size": [
+                  0.45,
+                  7.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  10,
+                  8.1,
+                  -53.65
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  10,
+                  7.5,
+                  -54.15
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LobbyCactusWest",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Trunk",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.2,
+                  0.34,
+                  0.18
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -22,
+                  3.75,
+                  -68
+                ],
+                "Size": [
+                  5.5,
+                  1.1,
+                  1.1
+                ],
+                "Orientation": [
+                  0,
+                  0,
+                  90
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "ArmA",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.2,
+                  0.34,
+                  0.18
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -20.9,
+                  4.025,
+                  -68
+                ],
+                "Size": [
+                  2.2,
+                  0.65,
+                  0.65
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "ArmB",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.2,
+                  0.34,
+                  0.18
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -22.9,
+                  4.96,
+                  -68
+                ],
+                "Size": [
+                  1.8,
+                  0.6,
+                  0.6
+                ],
+                "Shape": "Cylinder"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LobbyCactusEast",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Trunk",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.2,
+                  0.34,
+                  0.18
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  22,
+                  4.25,
+                  -68
+                ],
+                "Size": [
+                  6.5,
+                  1.1,
+                  1.1
+                ],
+                "Orientation": [
+                  0,
+                  0,
+                  90
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "ArmA",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.2,
+                  0.34,
+                  0.18
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  23.1,
+                  4.575,
+                  -68
+                ],
+                "Size": [
+                  2.2,
+                  0.65,
+                  0.65
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "ArmB",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.2,
+                  0.34,
+                  0.18
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  21.1,
+                  5.68,
+                  -68
+                ],
+                "Size": [
+                  1.8,
+                  0.6,
+                  0.6
+                ],
+                "Shape": "Cylinder"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Buildings",
+      "ClassName": "Model",
+      "Children": [
+        {
+          "Name": "Saloon",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "InteriorFloor",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -49,
+                  1.25,
+                  -20
+                ],
+                "Size": [
+                  19,
+                  0.5,
+                  23
+                ]
+              }
+            },
+            {
+              "Name": "BackWall",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.37,
+                  0.14,
+                  0.09
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -58.5,
+                  7,
+                  -20
+                ],
+                "Size": [
+                  1,
+                  12,
+                  24
+                ]
+              }
+            },
+            {
+              "Name": "NorthWall",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.37,
+                  0.14,
+                  0.09
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -49,
+                  7,
+                  -31.5
+                ],
+                "Size": [
+                  20,
+                  12,
+                  1
+                ]
+              }
+            },
+            {
+              "Name": "SouthWall",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.37,
+                  0.14,
+                  0.09
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -49,
+                  7,
+                  -8.5
+                ],
+                "Size": [
+                  20,
+                  12,
+                  1
+                ]
+              }
+            },
+            {
+              "Name": "FrontNorth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.37,
+                  0.14,
+                  0.09
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -38.5,
+                  7,
+                  -27
+                ],
+                "Size": [
+                  1,
+                  12,
+                  10
+                ]
+              }
+            },
+            {
+              "Name": "FrontSouth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.37,
+                  0.14,
+                  0.09
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -38.5,
+                  7,
+                  -13
+                ],
+                "Size": [
+                  1,
+                  12,
+                  10
+                ]
+              }
+            },
+            {
+              "Name": "FrontLintel",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.37,
+                  0.14,
+                  0.09
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -38.5,
+                  11.5,
+                  -20
+                ],
+                "Size": [
+                  1,
+                  3,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "Roof",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -49,
+                  13.5,
+                  -20
+                ],
+                "Size": [
+                  22,
+                  1,
+                  26
+                ]
+              }
+            },
+            {
+              "Name": "SignBoard",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -37.8,
+                  14.4,
+                  -20
+                ],
+                "Size": [
+                  0.5,
+                  3.2,
+                  12
+                ]
+              }
+            },
+            {
+              "Name": "SwingDoorNorth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -37.8,
+                  3.1,
+                  -21.2
+                ],
+                "Size": [
+                  0.35,
+                  3.6,
+                  1.4
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false
+              }
+            },
+            {
+              "Name": "SwingDoorSouth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -37.8,
+                  3.1,
+                  -18.8
+                ],
+                "Size": [
+                  0.35,
+                  3.6,
+                  1.4
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false
+              }
+            },
+            {
+              "Name": "WindowNorth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -37.75,
+                  6.2,
+                  -26.6
+                ],
+                "Size": [
+                  0.4,
+                  3.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "WindowSouth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -37.75,
+                  6.2,
+                  -13.4
+                ],
+                "Size": [
+                  0.4,
+                  3.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "InteriorBar",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -53,
+                  3,
+                  -24
+                ],
+                "Size": [
+                  2,
+                  4,
+                  9
+                ]
+              }
+            },
+            {
+              "Name": "InteriorTable",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -49,
+                  2.5,
+                  -14
+                ],
+                "Size": [
+                  4,
+                  3,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "BalconyFloor",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  8.0,
+                  -20
+                ],
+                "Size": [
+                  5.4,
+                  1,
+                  22
+                ]
+              }
+            },
+            {
+              "Name": "BalconyRail",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -33.2,
+                  9.7,
+                  -20
+                ],
+                "Size": [
+                  0.35,
+                  0.35,
+                  20
+                ]
+              }
+            },
+            {
+              "Name": "BalconyPostN",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -33.2,
+                  9.5,
+                  -29
+                ],
+                "Size": [
+                  0.45,
+                  3.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "BalconyPostC",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -33.2,
+                  9.5,
+                  -20
+                ],
+                "Size": [
+                  0.45,
+                  3.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "BalconyPostS",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -33.2,
+                  9.5,
+                  -11
+                ],
+                "Size": [
+                  0.45,
+                  3.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair01",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  1.5,
+                  -35.0
+                ],
+                "Size": [
+                  5.2,
+                  1.0,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair02",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  1.95,
+                  -33.7
+                ],
+                "Size": [
+                  5.2,
+                  1.9,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair03",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  2.4,
+                  -32.4
+                ],
+                "Size": [
+                  5.2,
+                  2.8,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair04",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  2.85,
+                  -31.1
+                ],
+                "Size": [
+                  5.2,
+                  3.7,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair05",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  3.3,
+                  -29.8
+                ],
+                "Size": [
+                  5.2,
+                  4.6,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair06",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  3.75,
+                  -28.5
+                ],
+                "Size": [
+                  5.2,
+                  5.5,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair07",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  4.2,
+                  -27.2
+                ],
+                "Size": [
+                  5.2,
+                  6.4,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair08",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.8,
+                  4.65,
+                  -25.9
+                ],
+                "Size": [
+                  5.2,
+                  7.300000000000001,
+                  2.0
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GeneralStore",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Body",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.48,
+                  0.29,
+                  0.1
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -49,
+                  6,
+                  19
+                ],
+                "Size": [
+                  20,
+                  10,
+                  20
+                ]
+              }
+            },
+            {
+              "Name": "Roof",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -49,
+                  11.5,
+                  19
+                ],
+                "Size": [
+                  22,
+                  1,
+                  22
+                ]
+              }
+            },
+            {
+              "Name": "FrontFacade",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.48,
+                  0.29,
+                  0.1
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -38.5,
+                  7.4,
+                  19
+                ],
+                "Size": [
+                  1,
+                  12.8,
+                  22
+                ]
+              }
+            },
+            {
+              "Name": "SignBoard",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -37.8,
+                  11.3,
+                  19
+                ],
+                "Size": [
+                  0.5,
+                  2.8,
+                  11
+                ]
+              }
+            },
+            {
+              "Name": "Door",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -37.8,
+                  3.6,
+                  19
+                ],
+                "Size": [
+                  0.45,
+                  5.2,
+                  3.8
+                ]
+              }
+            },
+            {
+              "Name": "WindowNorth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -37.75,
+                  5.4,
+                  13
+                ],
+                "Size": [
+                  0.4,
+                  3.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "WindowSouth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  -37.75,
+                  5.4,
+                  25
+                ],
+                "Size": [
+                  0.4,
+                  3.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "Porch",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.7,
+                  1.45,
+                  19
+                ],
+                "Size": [
+                  5.5,
+                  0.9,
+                  19
+                ]
+              }
+            },
+            {
+              "Name": "Awning",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -35.3,
+                  7.2,
+                  19
+                ],
+                "Size": [
+                  6.2,
+                  0.7,
+                  19
+                ]
+              }
+            },
+            {
+              "Name": "AwningPostN",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -33,
+                  4.2,
+                  11
+                ],
+                "Size": [
+                  0.45,
+                  6,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "AwningPostS",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  -33,
+                  4.2,
+                  27
+                ],
+                "Size": [
+                  0.45,
+                  6,
+                  0.45
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Sheriff",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Body",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.34,
+                  0.34,
+                  0.3
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  49,
+                  6.5,
+                  -18
+                ],
+                "Size": [
+                  20,
+                  11,
+                  20
+                ]
+              }
+            },
+            {
+              "Name": "Roof",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  49,
+                  12.5,
+                  -18
+                ],
+                "Size": [
+                  22,
+                  1,
+                  22
+                ]
+              }
+            },
+            {
+              "Name": "FrontFacade",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.34,
+                  0.34,
+                  0.3
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  38.5,
+                  8.2,
+                  -18
+                ],
+                "Size": [
+                  1,
+                  14.4,
+                  22
+                ]
+              }
+            },
+            {
+              "Name": "SignBoard",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  37.8,
+                  12.2,
+                  -18
+                ],
+                "Size": [
+                  0.5,
+                  2.8,
+                  10
+                ]
+              }
+            },
+            {
+              "Name": "Door",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  37.8,
+                  3.6,
+                  -18
+                ],
+                "Size": [
+                  0.45,
+                  5.2,
+                  3.8
+                ]
+              }
+            },
+            {
+              "Name": "WindowNorth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  37.75,
+                  5.6,
+                  -24
+                ],
+                "Size": [
+                  0.4,
+                  3.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "WindowSouth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  37.75,
+                  5.6,
+                  -12
+                ],
+                "Size": [
+                  0.4,
+                  3.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "BalconyFloor",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  7.0,
+                  -18
+                ],
+                "Size": [
+                  5.4,
+                  1,
+                  18
+                ]
+              }
+            },
+            {
+              "Name": "BalconyRail",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  33.2,
+                  8.7,
+                  -18
+                ],
+                "Size": [
+                  0.35,
+                  0.35,
+                  16
+                ]
+              }
+            },
+            {
+              "Name": "BalconyPostN",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  33.2,
+                  8.5,
+                  -25
+                ],
+                "Size": [
+                  0.45,
+                  3.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "BalconyPostS",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  33.2,
+                  8.5,
+                  -11
+                ],
+                "Size": [
+                  0.45,
+                  3.5,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair01",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  1.5,
+                  -34.0
+                ],
+                "Size": [
+                  5.2,
+                  1.0,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair02",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  1.95,
+                  -32.7
+                ],
+                "Size": [
+                  5.2,
+                  1.9,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair03",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  2.4,
+                  -31.4
+                ],
+                "Size": [
+                  5.2,
+                  2.8,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair04",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  2.85,
+                  -30.1
+                ],
+                "Size": [
+                  5.2,
+                  3.7,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair05",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  3.3,
+                  -28.8
+                ],
+                "Size": [
+                  5.2,
+                  4.6,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair06",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  3.75,
+                  -27.5
+                ],
+                "Size": [
+                  5.2,
+                  5.5,
+                  2.0
+                ]
+              }
+            },
+            {
+              "Name": "BalconyStair07",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  4.2,
+                  -26.2
+                ],
+                "Size": [
+                  5.2,
+                  6.4,
+                  2.0
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "Name": "Stable",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "BarnBody",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.28,
+                  0.14,
+                  0.065
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  49,
+                  5.5,
+                  20
+                ],
+                "Size": [
+                  20,
+                  9,
+                  20
+                ]
+              }
+            },
+            {
+              "Name": "BarnRoof",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  49,
+                  10.5,
+                  20
+                ],
+                "Size": [
+                  22,
+                  1,
+                  22
+                ]
+              }
+            },
+            {
+              "Name": "OpenDoor",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.08,
+                  0.1,
+                  0.12
+                ],
+                "Material": "SmoothPlastic",
+                "Position": [
+                  38.7,
+                  4.2,
+                  20
+                ],
+                "Size": [
+                  0.35,
+                  6.4,
+                  7
+                ]
+              }
+            },
+            {
+              "Name": "LoftDoor",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  38.65,
+                  8.2,
+                  20
+                ],
+                "Size": [
+                  0.3,
+                  2.2,
+                  4.5
+                ]
+              }
+            },
+            {
+              "Name": "StableAwning",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  35.8,
+                  6.7,
+                  20
+                ],
+                "Size": [
+                  6.2,
+                  0.7,
+                  18
+                ]
+              }
+            },
+            {
+              "Name": "AwningPostN",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  33,
+                  3.8,
+                  13
+                ],
+                "Size": [
+                  0.45,
+                  5.8,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "AwningPostS",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  33,
+                  3.8,
+                  27
+                ],
+                "Size": [
+                  0.45,
+                  5.8,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "HayBaleA",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.69,
+                  0.5,
+                  0.29
+                ],
+                "Material": "Fabric",
+                "Position": [
+                  33,
+                  2,
+                  16
+                ],
+                "Size": [
+                  5,
+                  2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "HayBaleB",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.69,
+                  0.5,
+                  0.29
+                ],
+                "Material": "Fabric",
+                "Position": [
+                  34,
+                  3.2,
+                  23
+                ],
+                "Size": [
+                  4,
+                  4.4,
+                  5
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "CoverAndProps",
+      "ClassName": "Model",
+      "Children": [
+        {
+          "Name": "WaterTrough",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              0,
+              2.1,
+              0
+            ],
+            "Size": [
+              12,
+              2.2,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "NorthBarricade",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -7,
+              2.5,
+              -19
+            ],
+            "Size": [
+              11,
+              3,
+              1.5
+            ]
+          }
+        },
+        {
+          "Name": "SouthBarricade",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              8,
+              2.5,
+              19
+            ],
+            "Size": [
+              11,
+              3,
+              1.5
+            ]
+          }
+        },
+        {
+          "Name": "WestAlleyCover",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -25,
+              3,
+              3
+            ],
+            "Size": [
+              3,
+              4,
+              8
+            ]
+          }
+        },
+        {
+          "Name": "EastAlleyCover",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              25,
+              3,
+              -3
+            ],
+            "Size": [
+              3,
+              4,
+              8
+            ]
+          }
+        },
+        {
+          "Name": "Crate01",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -10,
+              2.5,
+              -7
+            ],
+            "Size": [
+              5,
+              3,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "Crate02",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -7,
+              4.0,
+              -7
+            ],
+            "Size": [
+              3,
+              6,
+              3
+            ]
+          }
+        },
+        {
+          "Name": "Crate03",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              13,
+              2.5,
+              8
+            ],
+            "Size": [
+              5,
+              3,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "Crate04",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              10,
+              3.5,
+              9
+            ],
+            "Size": [
+              3,
+              5,
+              3
+            ]
+          }
+        },
+        {
+          "Name": "Crate05",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -28,
+              2.5,
+              32
+            ],
+            "Size": [
+              5,
+              3,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "Crate06",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              27,
+              2.5,
+              -34
+            ],
+            "Size": [
+              5,
+              3,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "Crate07",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -61,
+              2.5,
+              4
+            ],
+            "Size": [
+              5,
+              3,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "Crate08",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.31,
+              0.17,
+              0.08
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              61,
+              2.5,
+              -4
+            ],
+            "Size": [
+              5,
+              3,
+              5
+            ]
+          }
+        },
+        {
+          "Name": "Barrel01",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -15,
+              2.8,
+              17
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel02",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -18,
+              2.8,
+              18
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel03",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              17,
+              2.8,
+              -16
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel04",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              20,
+              2.8,
+              -17
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel05",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -31,
+              2.8,
+              -4
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel06",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              31,
+              2.8,
+              5
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel07",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -61,
+              2.8,
+              -30
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "Barrel08",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              61,
+              2.8,
+              30
+            ],
+            "Size": [
+              3.6,
+              3.0,
+              3.0
+            ],
+            "Orientation": [
+              0,
+              0,
+              90
+            ],
+            "Shape": "Cylinder"
+          }
+        },
+        {
+          "Name": "CorralRail32A",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              51,
+              2.2,
+              32
+            ],
+            "Size": [
+              22,
+              0.45,
+              0.45
+            ]
+          }
+        },
+        {
+          "Name": "CorralRail32B",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              51,
+              3.5,
+              32
+            ],
+            "Size": [
+              22,
+              0.45,
+              0.45
+            ]
+          }
+        },
+        {
+          "Name": "CorralRail40A",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              51,
+              2.2,
+              40
+            ],
+            "Size": [
+              22,
+              0.45,
+              0.45
+            ]
+          }
+        },
+        {
+          "Name": "CorralRail40B",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              51,
+              3.5,
+              40
+            ],
+            "Size": [
+              22,
+              0.45,
+              0.45
+            ]
+          }
+        },
+        {
+          "Name": "CorralPost40",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              40,
+              2.8,
+              36
+            ],
+            "Size": [
+              0.6,
+              4.2,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "CorralPost51",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              51,
+              2.8,
+              36
+            ],
+            "Size": [
+              0.6,
+              4.2,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "CorralPost62",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              62,
+              2.8,
+              36
+            ],
+            "Size": [
+              0.6,
+              4.2,
+              0.6
+            ]
+          }
+        },
+        {
+          "Name": "WestBackFenceNorth",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -63,
+              2.5,
+              -14
+            ],
+            "Size": [
+              1,
+              3,
+              12
+            ]
+          }
+        },
+        {
+          "Name": "WestBackFenceSouth",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              -63,
+              2.5,
+              17
+            ],
+            "Size": [
+              1,
+              3,
+              11
+            ]
+          }
+        },
+        {
+          "Name": "EastBackFenceNorth",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              63,
+              2.5,
+              -15
+            ],
+            "Size": [
+              1,
+              3,
+              11
+            ]
+          }
+        },
+        {
+          "Name": "EastBackFenceSouth",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "WoodPlanks",
+            "Position": [
+              63,
+              2.5,
+              8
+            ],
+            "Size": [
+              1,
+              3,
+              10
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Name": "TownDecor",
+      "ClassName": "Model",
+      "Children": [
+        {
+          "Name": "LampWestNorth",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -31,
+                  5.1,
+                  -30
+                ],
+                "Size": [
+                  0.45,
+                  7,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -31,
+                  8.2,
+                  -30.65
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  -31,
+                  7.6,
+                  -31.15
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LampWestCenter",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -31,
+                  5.1,
+                  0
+                ],
+                "Size": [
+                  0.45,
+                  7,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -31,
+                  8.2,
+                  -0.65
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  -31,
+                  7.6,
+                  -1.15
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LampWestSouth",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -31,
+                  5.1,
+                  30
+                ],
+                "Size": [
+                  0.45,
+                  7,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  -31,
+                  8.2,
+                  29.35
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  -31,
+                  7.6,
+                  28.85
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LampEastNorth",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  31,
+                  5.1,
+                  -30
+                ],
+                "Size": [
+                  0.45,
+                  7,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  31,
+                  8.2,
+                  -30.65
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  31,
+                  7.6,
+                  -31.15
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LampEastCenter",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  31,
+                  5.1,
+                  0
+                ],
+                "Size": [
+                  0.45,
+                  7,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  31,
+                  8.2,
+                  -0.65
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  31,
+                  7.6,
+                  -1.15
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "LampEastSouth",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Post",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  31,
+                  5.1,
+                  30
+                ],
+                "Size": [
+                  0.45,
+                  7,
+                  0.45
+                ]
+              }
+            },
+            {
+              "Name": "Arm",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  31,
+                  8.2,
+                  29.35
+                ],
+                "Size": [
+                  0.4,
+                  0.4,
+                  1.6
+                ]
+              }
+            },
+            {
+              "Name": "Glow",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  1.0,
+                  0.55,
+                  0.16
+                ],
+                "Material": "Neon",
+                "Position": [
+                  31,
+                  7.6,
+                  28.85
+                ],
+                "Size": [
+                  0.55,
+                  0.75,
+                  0.55
+                ],
+                "CanCollide": false,
+                "CanQuery": false,
+                "CanTouch": false,
+                "Shape": "Ball"
+              },
+              "Children": [
+                {
+                  "Name": "WarmLight",
+                  "ClassName": "PointLight",
+                  "Properties": {
+                    "Brightness": 1.6,
+                    "Color": [
+                      1.0,
+                      0.55,
+                      0.16
+                    ],
+                    "Range": 12,
+                    "Shadows": false
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "StreetWagon",
+          "ClassName": "Model",
+          "Children": [
+            {
+              "Name": "Bed",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.31,
+                  0.17,
+                  0.08
+                ],
+                "Material": "WoodPlanks",
+                "Position": [
+                  12,
+                  3.2,
+                  -29
+                ],
+                "Size": [
+                  8,
+                  2.2,
+                  4
+                ]
+              }
+            },
+            {
+              "Name": "SideNorth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "Wood",
+                "Position": [
+                  12,
+                  4.7,
+                  -30.8
+                ],
+                "Size": [
+                  8,
+                  1.6,
+                  0.35
+                ]
+              }
+            },
+            {
+              "Name": "SideSouth",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.47,
+                  0.29,
+                  0.13
+                ],
+                "Material": "Wood",
+                "Position": [
+                  12,
+                  4.7,
+                  -27.2
+                ],
+                "Size": [
+                  8,
+                  1.6,
+                  0.35
+                ]
+              }
+            },
+            {
+              "Name": "WheelWest",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  8.8,
+                  2.7,
+                  -31.15
+                ],
+                "Size": [
+                  0.7,
+                  3.4,
+                  3.4
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "WheelEast",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  15.2,
+                  2.7,
+                  -31.15
+                ],
+                "Size": [
+                  0.7,
+                  3.4,
+                  3.4
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "WheelWestRear",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  8.8,
+                  2.7,
+                  -26.85
+                ],
+                "Size": [
+                  0.7,
+                  3.4,
+                  3.4
+                ],
+                "Shape": "Cylinder"
+              }
+            },
+            {
+              "Name": "WheelEastRear",
+              "ClassName": "Part",
+              "Properties": {
+                "Anchored": true,
+                "Color": [
+                  0.17,
+                  0.09,
+                  0.045
+                ],
+                "Material": "Wood",
+                "Position": [
+                  15.2,
+                  2.7,
+                  -26.85
+                ],
+                "Size": [
+                  0.7,
+                  3.4,
+                  3.4
+                ],
+                "Shape": "Cylinder"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HitchPostWestA",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -29,
+              3,
+              9
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "HitchPostWestB",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              -29,
+              3,
+              17
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "HitchRailWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              -29,
+              3.6,
+              13
+            ],
+            "Size": [
+              0.55,
+              0.55,
+              8
+            ]
+          }
+        },
+        {
+          "Name": "HitchPostEastA",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              29,
+              3,
+              -8
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "HitchPostEastB",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              29,
+              3,
+              0
+            ],
+            "Size": [
+              0.7,
+              4,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "HitchRailEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              29,
+              3.6,
+              -4
+            ],
+            "Size": [
+              0.55,
+              0.55,
+              8
+            ]
+          }
+        },
+        {
+          "Name": "RockNorthWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Slate",
+            "Position": [
+              -21,
+              2,
+              -40
+            ],
+            "Size": [
+              7,
+              2,
+              5
+            ],
+            "Orientation": [
+              0,
+              18,
+              8
+            ]
+          }
+        },
+        {
+          "Name": "RockSouthEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.43,
+              0.27,
+              0.16
+            ],
+            "Material": "Slate",
+            "Position": [
+              22,
+              2,
+              39
+            ],
+            "Size": [
+              6,
+              2.2,
+              5
+            ],
+            "Orientation": [
+              0,
+              -20,
+              -6
+            ]
+          }
+        },
+        {
+          "Name": "NoticeBoard",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.47,
+              0.29,
+              0.13
+            ],
+            "Material": "Wood",
+            "Position": [
+              29,
+              5,
+              -19
+            ],
+            "Size": [
+              0.6,
+              5.5,
+              6
+            ]
+          }
+        },
+        {
+          "Name": "NoticePostA",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              29,
+              2.6,
+              -21
+            ],
+            "Size": [
+              0.7,
+              3.2,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "NoticePostB",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.17,
+              0.09,
+              0.045
+            ],
+            "Material": "Wood",
+            "Position": [
+              29,
+              2.6,
+              -17
+            ],
+            "Size": [
+              0.7,
+              3.2,
+              0.7
+            ]
+          }
+        },
+        {
+          "Name": "HayStackWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "Fabric",
+            "Position": [
+              -28,
+              2.3,
+              -10
+            ],
+            "Size": [
+              4.5,
+              2.6,
+              3.5
+            ]
+          }
+        },
+        {
+          "Name": "HayStackEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "Fabric",
+            "Position": [
+              27,
+              2.3,
+              25
+            ],
+            "Size": [
+              4.5,
+              2.6,
+              3.5
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Name": "Spawns",
+      "ClassName": "Model",
+      "Children": [
+        {
+          "Name": "SpawnNorthWestBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -63,
+              1.5,
+              -38
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnNorthStreetWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -27,
+              1.5,
+              -39
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnNorthStreetEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              27,
+              1.5,
+              -39
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnNorthEastBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              63,
+              1.5,
+              -38
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnEastAlley",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              58,
+              1.5,
+              0
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnSouthEastBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              63,
+              1.5,
+              38
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnSouthStreetEast",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              27,
+              1.5,
+              39
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnSouthStreetWest",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -27,
+              1.5,
+              39
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnSouthWestBack",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -63,
+              1.5,
+              38
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        },
+        {
+          "Name": "SpawnWestAlley",
+          "ClassName": "Part",
+          "Properties": {
+            "Anchored": true,
+            "Color": [
+              0.69,
+              0.5,
+              0.29
+            ],
+            "Material": "SmoothPlastic",
+            "Position": [
+              -58,
+              1.5,
+              0
+            ],
+            "Size": [
+              7,
+              0.2,
+              7
+            ],
+            "CanCollide": false,
+            "CanQuery": false,
+            "CanTouch": false,
+            "Transparency": 1
+          }
+        }
+      ]
+    }
+  ]
+}

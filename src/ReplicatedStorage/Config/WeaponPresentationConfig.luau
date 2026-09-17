@@ -1,0 +1,75 @@
+--!strict
+-- Presentation only. Gameplay timing, ammo, roll and hit detection stay in Config/WeaponConfig.
+-- Positions are camera-local studs; rotations are degrees. The revolver points along camera -Z.
+local WeaponPresentationConfig = {
+	ViewmodelPosition = Vector3.new(0.49, -1.42, -1.12),
+	ViewmodelRotation = Vector3.new(0, 7, 0),
+	RightArmPosition = Vector3.new(0.08, -0.20, -0.26),
+	RightArmRotation = Vector3.new(-18, 0, 8),
+	LeftArmPosition = Vector3.new(-0.32, -0.30, -0.50),
+	LeftArmRotation = Vector3.new(12, 0, -20),
+	ArmSize = Vector3.new(0.34, 0.88, 0.34),
+
+	FireKickDuration = 0.065,
+	FireRecoveryDuration = 0.225,
+	FireKickPosition = Vector3.new(-0.025, 0.12, 0.23),
+	FireKickRotation = Vector3.new(13.5, 0.7, 2.6),
+	CameraPitchDegrees = 0.58,
+	CameraYawDegrees = 0.08,
+	CameraFovDegrees = 0.42,
+	HammerPullDegrees = 27,
+	TriggerPullDegrees = 11,
+
+	EquipDuration = 0.32,
+	EquipStartPosition = Vector3.new(0.06, -0.34, 0.18),
+	EquipStartRotation = Vector3.new(-18, 0, 12),
+	EmptyClickDuration = 0.12,
+	EmptyClickPosition = Vector3.new(0, -0.014, 0.024),
+	EmptyClickRotation = Vector3.new(0.8, 0, 0),
+
+	SwayDegrees = 0.3,
+	SwayPosition = 0.012,
+	SwayResponse = 13,
+	WalkBobDistance = 0.014,
+	WalkBobDegrees = 0.18,
+	WalkBobSpeed = 8,
+	MovementResponse = 9,
+	StrafeLeanDegrees = 0.45,
+	LandingDip = 0.035,
+	LandingRecovery = 9,
+	RollLowerDistance = 0.58,
+	RollTiltDegrees = 13,
+
+	ReloadTiltDegrees = 17,
+	ReloadLowerDistance = 0.23,
+	ReloadCenterDistance = 0.22,
+	ReloadBackDistance = 0.08,
+	ReloadPitchDegrees = -9,
+	ReloadCylinderOpenDistance = 0.18,
+	ReloadCylinderSpinDegrees = 180,
+	RollSideDistance = 0.12,
+	RollBackDistance = 0.18,
+	RollPitchDegrees = -18,
+
+	MuzzleFlashDuration = 0.045,
+	TracerLength = 6,
+	TracerLifetime = 0.035,
+	TracerWidth = 0.026,
+
+	-- Replace these built-in placeholders with uploaded Roblox audio IDs when ready.
+	FireSoundId = "rbxasset://sounds/snap.mp3",
+	MechanicalSoundId = "rbxasset://sounds/button.wav",
+	EmptySoundId = "rbxasset://sounds/button.wav",
+	ReloadSoundId = "rbxasset://sounds/electronicpingshort.wav",
+	CylinderSoundId = "rbxasset://sounds/button.wav",
+	EquipSoundId = "rbxasset://sounds/button.wav",
+	FireVolume = 0.82,
+	MechanicalVolume = 0.18,
+	EmptyVolume = 0.46,
+	ReloadVolume = 0.53,
+	CylinderVolume = 0.20,
+	EquipVolume = 0.20,
+	FirePitchVariation = 0.035,
+}
+
+return table.freeze(WeaponPresentationConfig)
