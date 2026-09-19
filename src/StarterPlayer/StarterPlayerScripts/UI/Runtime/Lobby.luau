@@ -29,13 +29,17 @@ function Lobby.mount(scope: Fusion.Scope, state: RuntimeState.State)
 			scope:New "Frame" {
 				Name = "LobbyHint",
 				AnchorPoint = Vector2.new(0.5, 1),
-				Position = UDim2.new(0.5, 0, 1, -24),
-				Size = UDim2.fromOffset(490, 68),
+				Position = UDim2.new(0.5, 0, 1, -Theme.Layout.ScreenMargin),
+				Size = UDim2.new(1, -Theme.Layout.ScreenMargin * 2, 0, Theme.Layout.LobbyHintHeight),
 				BackgroundColor3 = Theme.Colors.Surface,
 				BackgroundTransparency = 0.16,
 				BorderSizePixel = 0,
 				Active = false,
 				[Fusion.Children] = {
+					scope:New "UISizeConstraint" {
+						MinSize = Vector2.new(280, Theme.Layout.LobbyHintHeight),
+						MaxSize = Vector2.new(Theme.Layout.LobbyHintWidth, Theme.Layout.LobbyHintHeight),
+					},
 					scope:New "UICorner" {
 						CornerRadius = UDim.new(0, 8),
 					},
@@ -63,7 +67,9 @@ function Lobby.mount(scope: Fusion.Scope, state: RuntimeState.State)
 						Text = "Walk to the gate and press F to enter · G at the board for settings",
 						TextColor3 = Color3.fromRGB(239, 225, 201),
 						TextSize = 13,
+						TextWrapped = true,
 						TextXAlignment = Enum.TextXAlignment.Left,
+						TextYAlignment = Enum.TextYAlignment.Center,
 					},
 				},
 			},
@@ -98,6 +104,7 @@ function Lobby.mount(scope: Fusion.Scope, state: RuntimeState.State)
 	end
 
 	scope:Observer(state.gameState):onChange(updateBackpack)
+	table.insert(scope, state.localPlayer.CharacterAdded:Connect(updateBackpack))
 	updateBackpack()
 
 	return screenGui

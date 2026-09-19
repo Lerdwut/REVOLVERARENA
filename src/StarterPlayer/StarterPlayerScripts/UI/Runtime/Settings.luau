@@ -52,6 +52,11 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 	local alive = true
 	table.insert(scope, function()
 		alive = false
+		if settingsStore.IsOpen() then
+			settingsStore.SetOpen(false)
+		end
+		UserInputService.MouseBehavior = Enum.MouseBehavior.Default
+		UserInputService.MouseIconEnabled = true
 	end)
 
 	local scaleValue = scope:Value(1)
@@ -59,25 +64,43 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		local currentState = use(state.gameState)
 		return currentState == GameState.Lobby or currentState == GameState.Arena
 	end)
+	if not Fusion.peek(visibleInState) then
+		settingsStore.SetOpen(false)
+	end
+	local settingsButtonVisible = scope:Computed(function(use)
+		return use(visibleInState) and not use(state.panelOpen)
+	end)
 
 	local settingsButton = scope:New "TextButton" {
 		Name = "SettingsButton",
 		AnchorPoint = Vector2.new(1, 0),
-		Position = UDim2.new(1, -20, 0, 18),
+		Position = UDim2.new(1, -Theme.Layout.ScreenMargin, 0, 18),
 		Size = UDim2.fromOffset(110, 36),
-		BackgroundColor3 = Color3.fromRGB(43, 35, 29),
+		BackgroundColor3 = Theme.Colors.Surface,
 		BackgroundTransparency = 0.08,
 		BorderSizePixel = 0,
 		Font = Theme.Fonts.Bold,
 		Text = "SETTINGS",
 		TextColor3 = Color3.fromRGB(248, 218, 172),
 		TextSize = 13,
-		Visible = visibleInState,
+		AutoButtonColor = false,
+		ZIndex = 2,
+		Visible = settingsButtonVisible,
 		[Fusion.OnEvent("Activated")] = function()
 			settingsStore.SetOpen(not settingsStore.IsOpen())
 		end,
 	}
 	corner(scope, settingsButton, 6)
+
+	local settingsBackdrop = scope:New "Frame" {
+		Name = "SettingsBackdrop",
+		Size = UDim2.fromScale(1, 1),
+		BackgroundColor3 = Color3.new(0, 0, 0),
+		BackgroundTransparency = 0.52,
+		BorderSizePixel = 0,
+		Visible = state.panelOpen,
+		ZIndex = 0,
+	}
 
 	local inputSink = scope:New "TextButton" {
 		Name = "SettingsInputSink",
@@ -90,6 +113,7 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		Visible = state.panelOpen,
 		Active = true,
 		ZIndex = 1,
+		Selectable = false,
 		[Fusion.OnEvent("Activated")] = function()
 			settingsStore.SetOpen(false)
 		end,
@@ -99,14 +123,16 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		Name = "SettingsPanel",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.fromScale(0.5, 0.5),
-		Size = UDim2.fromOffset(560, 630),
-		BackgroundColor3 = Color3.fromRGB(32, 27, 24),
+		Size = UDim2.fromOffset(Theme.Layout.SettingsPanelWidth, Theme.Layout.SettingsPanelHeight),
+		BackgroundColor3 = Theme.Colors.Panel,
 		BorderSizePixel = 0,
 		Visible = state.panelOpen,
 		ZIndex = 2,
+		Active = true,
+		ClipsDescendants = true,
 		[Fusion.Children] = {
 			scope:New "UIStroke" {
-				Color = Color3.fromRGB(154, 105, 58),
+				Color = Theme.Colors.PanelBorder,
 				Thickness = 2,
 				Transparency = 0.15,
 			},
@@ -135,7 +161,7 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		Name = "Content",
 		Position = UDim2.fromOffset(18, 67),
 		Size = UDim2.fromOffset(524, 483),
-		CanvasSize = UDim2.fromOffset(0, 601),
+		CanvasSize = UDim2.fromOffset(0, Theme.Layout.SettingsContentHeight),
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0,
 		ScrollBarThickness = 5,
@@ -162,6 +188,7 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		local fraction = scope:Computed(function(use)
 			return math.clamp((use(valueState) - minimum) / (maximum - minimum), 0, 1)
 		end)
+		local visualFraction = scope:Spring(fraction, 180, 1)
 		local numberText = scope:Computed(function(use)
 			return string.format("%." .. decimalPlaces .. "f", use(valueState))
 		end)
@@ -177,13 +204,15 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 			BorderSizePixel = 0,
 			Text = "",
 			AutoButtonColor = false,
+			Active = true,
+			Selectable = false,
 			Parent = content,
 		}
 		local rail = scope:New "Frame" {
 			Name = "Rail",
 			Position = UDim2.fromOffset(0, 8),
 			Size = UDim2.new(1, 0, 0, 8),
-			BackgroundColor3 = Color3.fromRGB(91, 77, 64),
+			BackgroundColor3 = Theme.Colors.SliderRail,
 			BorderSizePixel = 0,
 			Parent = track,
 		}
@@ -191,9 +220,9 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		local fill = scope:New "Frame" {
 			Name = "Fill",
 			Size = scope:Computed(function(use)
-				return UDim2.fromScale(use(fraction), 1)
+				return UDim2.fromScale(use(visualFraction), 1)
 			end),
-			BackgroundColor3 = Color3.fromRGB(222, 151, 75),
+			BackgroundColor3 = Theme.Colors.SliderFill,
 			BorderSizePixel = 0,
 			Parent = rail,
 		}
@@ -202,11 +231,12 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 			Name = "Knob",
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			Position = scope:Computed(function(use)
-				return UDim2.fromScale(use(fraction), 0.5)
+				return UDim2.fromScale(use(visualFraction), 0.5)
 			end),
 			Size = UDim2.fromOffset(16, 16),
-			BackgroundColor3 = Color3.fromRGB(255, 226, 176),
+			BackgroundColor3 = Theme.Colors.SliderKnob,
 			BorderSizePixel = 0,
+			ZIndex = 2,
 			Parent = track,
 		}
 		corner(scope, knob, 8)
@@ -263,10 +293,12 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 			TextSize = 13,
 			BackgroundColor3 = scope:Computed(function(use)
 				return if use(valueState)
-					then Color3.fromRGB(95, 139, 94)
-					else Color3.fromRGB(89, 79, 71)
+					then Theme.Colors.ToggleOn
+					else Theme.Colors.ToggleOff
 			end),
 			TextColor3 = Color3.fromRGB(250, 239, 217),
+			AutoButtonColor = false,
+			Selectable = false,
 			[Fusion.OnEvent("Activated")] = function()
 				settingsStore.Set(settingKey, not settingsStore.GetBoolean(settingKey))
 			end,
@@ -291,12 +323,14 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		Name = "ResetToDefault",
 		Position = UDim2.fromOffset(20, 567),
 		Size = UDim2.fromOffset(245, 43),
-		BackgroundColor3 = Color3.fromRGB(73, 60, 49),
+		BackgroundColor3 = Theme.Colors.SurfaceRaised,
 		BorderSizePixel = 0,
 		Font = Theme.Fonts.Bold,
 		Text = "RESET TO DEFAULT",
 		TextColor3 = Color3.fromRGB(241, 220, 186),
 		TextSize = 13,
+		AutoButtonColor = false,
+		Selectable = false,
 		[Fusion.OnEvent("Activated")] = function()
 			settingsStore.Reset()
 		end,
@@ -308,12 +342,14 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		Name = "Close",
 		Position = UDim2.fromOffset(294, 567),
 		Size = UDim2.fromOffset(245, 43),
-		BackgroundColor3 = Color3.fromRGB(159, 76, 46),
+		BackgroundColor3 = Theme.Colors.Danger,
 		BorderSizePixel = 0,
 		Font = Theme.Fonts.Bold,
 		Text = "CLOSE",
 		TextColor3 = Color3.fromRGB(252, 233, 204),
 		TextSize = 14,
+		AutoButtonColor = false,
+		Selectable = false,
 		[Fusion.OnEvent("Activated")] = function()
 			settingsStore.SetOpen(false)
 		end,
@@ -325,7 +361,14 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		local camera = Workspace.CurrentCamera
 		if camera then
 			local viewport = camera.ViewportSize
-			scaleValue:set(math.clamp(math.min(viewport.X / 650, viewport.Y / 720), 0.55, 1))
+			scaleValue:set(math.clamp(
+				math.min(
+					viewport.X / Theme.Layout.SettingsViewportWidth,
+					viewport.Y / Theme.Layout.SettingsViewportHeight
+				),
+				Theme.Layout.SettingsMinScale,
+				1
+			))
 		end
 	end
 
@@ -372,6 +415,12 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		if currentState == GameState.EnteringArena or currentState == GameState.Dead then
 			settingsStore.SetOpen(false)
 		end
+		updatePanel(Fusion.peek(state.panelOpen))
+	end)
+	scope:Observer(visibleInState):onChange(function()
+		if not Fusion.peek(visibleInState) then
+			settingsStore.SetOpen(false)
+		end
 	end)
 
 	task.spawn(function()
@@ -398,9 +447,11 @@ function Settings.mount(scope: Fusion.Scope, state: RuntimeState.State, settings
 		IgnoreGuiInset = true,
 		DisplayOrder = 30,
 		ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+		Enabled = visibleInState,
 		Parent = state.playerGui,
 		[Fusion.Children] = {
 			settingsButton,
+			settingsBackdrop,
 			inputSink,
 			panel,
 		},

@@ -79,7 +79,7 @@ local function StatusCard(scope: Scope, props: StatusCardProps): Frame
 		scope:New "TextLabel" {
 			Name = "Ammo",
 			AnchorPoint = Vector2.new(1, 1),
-			Position = UDim2.new(1, -32, 1, -26),
+			Position = UDim2.new(1, -Theme.Layout.HudMargin, 1, -26),
 			Size = UDim2.fromOffset(180, 42),
 			BackgroundTransparency = 1,
 			Font = Theme.Fonts.Bold,
@@ -92,7 +92,7 @@ local function StatusCard(scope: Scope, props: StatusCardProps): Frame
 		scope:New "TextLabel" {
 			Name = "KillStreak",
 			AnchorPoint = Vector2.new(1, 0),
-			Position = UDim2.new(1, -32, 0, 65),
+			Position = UDim2.new(1, -Theme.Layout.HudMargin, 0, 65),
 			Size = UDim2.fromOffset(220, 34),
 			BackgroundTransparency = 1,
 			Font = Theme.Fonts.Bold,

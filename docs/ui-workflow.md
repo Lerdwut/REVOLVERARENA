@@ -2,6 +2,18 @@
 
 This guide covers the reusable Fusion UI layer, the single Fusion-owned runtime UI root, and the UI Labs storybook workflow for RevolverArena. Runtime HUD, lobby, scoreboard, settings, transition, kill-feed, and wanted-marker presentation is composed by `StarterPlayerScripts/UI/UIController.client.luau`; the gameplay and settings contracts it observes remain outside the UI layer.
 
+## UI-01–UI-03 status
+
+The implementation work for the first three UI/UX tasks is complete on branch `feat/ui-01-03-polish`. The remaining status is Roblox Studio Play Mode visual and interaction QA.
+
+| Task | Status | Implementation summary |
+| --- | --- | --- |
+| UI-01 Combat HUD cleanup | Implemented; Studio QA pending | Shared HUD layout tokens, readable ammo/streak/roll presentation, kill-feed truncation, safe margins, and hotbar re-application after respawn |
+| UI-02 Lobby HUD state | Implemented; Studio QA pending | Responsive lobby hint, Fusion state visibility gates, settings closure on non-play states, and preserved no-auto-modal behavior |
+| UI-03 Settings panel polish | Implemented; Studio QA pending | Modal backdrop, spring-smoothed sliders, responsive panel scale, validated SettingsStore writes, mouse-lock restoration, and scoped cleanup |
+
+The implementation leaves `SettingsStore`'s public API and the gameplay, camera, weapon, audio, and remotes contracts unchanged.
+
 ## Toolchain
 
 | Tool or package | Version | Role |

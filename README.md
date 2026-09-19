@@ -12,13 +12,14 @@ RevolverArena is a compact Roblox arena shooter built around a server-authoritat
 - Server-validated firing, ammo, reload, combat roll, raycasts, hit confirmation, kills, deaths, streaks, and wanted state
 - First-person camera, viewmodel animation, recoil, sway, bob, muzzle flash, tracers, and feedback effects
 - Fusion-owned runtime HUD, ammo and roll status, kill feed, scoreboard, lobby prompt, transitions, and local settings
+- UI-01 through UI-03 runtime polish is implemented on `feat/ui-01-03-polish`; Studio Play Mode visual QA remains
 - Rojo-managed western arena, Lighting, and the `StarterPack.Revolver` Tool
 
 ### In progress
 
 - Final revolver/viewmodel visual polish and imported-asset review
 - Production audio replacement; presentation config still references built-in placeholder sounds
-- Repeated Roblox Studio multiplayer testing across lobby, combat, death, and re-entry
+- Repeated Roblox Studio multiplayer testing across lobby, combat, death, re-entry, and the UI-01–UI-03 acceptance matrix
 
 ### Planned
 

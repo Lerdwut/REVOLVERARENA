@@ -53,6 +53,7 @@ function KillFeed.mount(
 			TextSize = 15,
 			TextStrokeTransparency = 0.75,
 			TextTransparency = textTransparency,
+			TextTruncate = Enum.TextTruncate.AtEnd,
 			TextXAlignment = Enum.TextXAlignment.Right,
 			LayoutOrder = entry.layoutOrder,
 		}
@@ -61,7 +62,7 @@ function KillFeed.mount(
 	local frame = scope:New "Frame" {
 		Name = "KillFeed",
 		AnchorPoint = Vector2.new(1, 0),
-		Position = UDim2.new(1, -32, 0, 107),
+		Position = UDim2.new(1, -Theme.Layout.HudMargin, 0, 107),
 		Size = UDim2.fromOffset(360, 150),
 		BackgroundTransparency = 1,
 		Visible = state.combatVisible,

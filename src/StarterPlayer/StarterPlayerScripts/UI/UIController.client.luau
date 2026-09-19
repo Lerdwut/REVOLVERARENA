@@ -7,16 +7,17 @@ local Fusion = require(ReplicatedStorage:WaitForChild("Packages"):WaitForChild("
 local SettingsStore = require(script.Parent.Parent:WaitForChild("Shared"):WaitForChild("SettingsStore"))
 local GameAudio = require(script.Parent.Parent:WaitForChild("Shared"):WaitForChild("GameAudio"))
 
-local RuntimeState = require(script:WaitForChild("Runtime"):WaitForChild("RuntimeState"))
-local HUD = require(script:WaitForChild("Runtime"):WaitForChild("HUD"))
-local Lobby = require(script:WaitForChild("Runtime"):WaitForChild("Lobby"))
-local Scoreboard = require(script:WaitForChild("Runtime"):WaitForChild("Scoreboard"))
-local Settings = require(script:WaitForChild("Runtime"):WaitForChild("Settings"))
-local Transition = require(script:WaitForChild("Runtime"):WaitForChild("Transition"))
+local runtimeFolder = script.Parent:WaitForChild("Runtime")
+local RuntimeState = require(runtimeFolder:WaitForChild("RuntimeState"))
+local HUD = require(runtimeFolder:WaitForChild("HUD"))
+local Lobby = require(runtimeFolder:WaitForChild("Lobby"))
+local Scoreboard = require(runtimeFolder:WaitForChild("Scoreboard"))
+local Settings = require(runtimeFolder:WaitForChild("Settings"))
+local Transition = require(runtimeFolder:WaitForChild("Transition"))
 
 local localPlayer = Players.LocalPlayer
 local playerGui = localPlayer:WaitForChild("PlayerGui")
-local scope = Fusion.scoped()
+local scope = Fusion.scoped(Fusion)
 local alive = true
 
 table.insert(scope, function()
