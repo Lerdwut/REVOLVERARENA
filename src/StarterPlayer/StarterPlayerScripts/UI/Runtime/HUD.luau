@@ -7,6 +7,7 @@ local Fusion = require(ReplicatedStorage:WaitForChild("Packages"):WaitForChild("
 local WeaponConfig = require(ReplicatedStorage:WaitForChild("Config"):WaitForChild("WeaponConfig"))
 local Theme = require(ReplicatedStorage:WaitForChild("UI"):WaitForChild("Theme"))
 local StatusCard = require(ReplicatedStorage:WaitForChild("UI"):WaitForChild("Components"):WaitForChild("StatusCard"))
+local StreakBanner = require(ReplicatedStorage:WaitForChild("UI"):WaitForChild("Components"):WaitForChild("StreakBanner"))
 local Constants = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Constants"))
 local GameState = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("GameState"))
 local KillFeed = require(script.Parent:WaitForChild("KillFeed"))
@@ -132,30 +133,25 @@ function HUD.mount(
 		gameState = state.gameState,
 	})
 
-	local announcementText = scope:Value("")
-	local announcementColor = scope:Value(Color3.fromRGB(255, 202, 92))
+	local announcementTitle = scope:Value("")
+	local announcementDetail = scope:Value("")
+	local announcementColor = scope:Value(Theme.Colors.Accent)
 	local announcementTarget = scope:Value(1)
 	local announcementBackgroundTarget = scope:Value(1)
 	local announcementTweenInfo = scope:Value(TweenInfo.new(0.3))
 	local announcementTransparency = scope:Tween(announcementTarget, announcementTweenInfo)
 	local announcementBackgroundTransparency = scope:Tween(announcementBackgroundTarget, announcementTweenInfo)
-	local announcementLabel = scope:New "TextLabel" {
-		Name = "StreakAnnouncement",
-		AnchorPoint = Vector2.new(0.5, 0),
-		Position = UDim2.new(0.5, 0, 0, 72),
-		Size = UDim2.fromOffset(520, 58),
-		BackgroundColor3 = Color3.fromRGB(28, 20, 15),
-		BackgroundTransparency = announcementBackgroundTransparency,
-		BorderSizePixel = 0,
-		Font = Theme.Fonts.Bold,
-		Text = announcementText,
-		TextColor3 = announcementColor,
-		TextSize = 22,
-		TextStrokeTransparency = 0.45,
-		TextTransparency = announcementTransparency,
-		ZIndex = 6,
-		Parent = screenGui,
-	}
+	StreakBanner(scope, {
+		parent = screenGui,
+		title = announcementTitle,
+		detail = announcementDetail,
+		accentColor = announcementColor,
+		textTransparency = announcementTransparency,
+		backgroundTransparency = announcementBackgroundTransparency,
+		visible = state.combatVisible,
+		position = UDim2.new(0.5, 0, 0, Theme.Layout.StreakBannerTopOffset),
+		size = UDim2.new(0.6, 0, 0, Theme.Layout.StreakBannerHeight),
+	})
 
 	local deathFlashTarget = scope:Value(1)
 	local deathFlashTweenInfo = scope:Value(TweenInfo.new(0.4))
@@ -350,13 +346,12 @@ function HUD.mount(
 		end)
 	end
 
-	local function showAnnouncement(text: string, isStreakEnded: boolean)
+	local function showAnnouncement(title: string, detail: string, color: Color3)
 		announcementGeneration += 1
 		local generation = announcementGeneration
-		announcementText:set(text)
-		announcementColor:set(if isStreakEnded
-			then Color3.fromRGB(255, 132, 92)
-			else Color3.fromRGB(255, 202, 92))
+		announcementTitle:set(title)
+		announcementDetail:set(detail)
+		announcementColor:set(color)
 		announcementTweenInfo:set(TweenInfo.new(0))
 		announcementTarget:set(0)
 		announcementBackgroundTarget:set(0.28)
@@ -513,14 +508,25 @@ function HUD.mount(
 			local playerName = if typeof(valueA) == "string" then valueA else "Player"
 			local milestone = if typeof(valueB) == "string" then valueB else "HOT"
 			local feedbackStreak = if typeof(valueC) == "number" then math.floor(valueC) else 0
-			showAnnouncement(string.format("%s — %s  x%d", playerName, milestone, feedbackStreak), false)
+			local milestoneColor = Theme.StreakTiers[milestone] or Theme.Colors.Accent
+			showAnnouncement(
+				milestone,
+				string.format("%s · STREAK x%d", playerName, math.max(0, feedbackStreak)),
+				milestoneColor
+			)
 		elseif feedbackType == "StreakEnded" then
 			if not Fusion.peek(state.combatVisible) then
 				return
 			end
 			local killerName = if typeof(valueA) == "string" then valueA else "Player"
 			local wantedName = if typeof(valueB) == "string" then valueB else "Player"
-			showAnnouncement(string.format("%s ended %s's streak!", killerName, wantedName), true)
+			local endedStreak = if typeof(valueC) == "number" then math.max(0, math.floor(valueC)) else 0
+			local suffix = if endedStreak > 0 then string.format(" · x%d", endedStreak) else ""
+			showAnnouncement(
+				"STREAK ENDED",
+				string.format("%s ended %s's streak%s", killerName, wantedName, suffix),
+				Theme.Colors.Danger
+			)
 		elseif feedbackType == "Death" then
 			showDeathFeedback(if typeof(valueA) == "string" then valueA else "")
 		end

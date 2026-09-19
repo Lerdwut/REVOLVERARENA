@@ -2,9 +2,9 @@
 
 This guide covers the reusable Fusion UI layer, the single Fusion-owned runtime UI root, and the UI Labs storybook workflow for RevolverArena. Runtime HUD, lobby, scoreboard, settings, transition, kill-feed, and wanted-marker presentation is composed by `StarterPlayerScripts/UI/UIController.client.luau`; the gameplay and settings contracts it observes remain outside the UI layer.
 
-## UI-01–UI-04 status
+## UI-01–UI-05 status
 
-The implementation and Studio QA for UI-01 through UI-03 has been verified by the project owner. UI-04 is implemented on branch `feat/ui-04-kill-feed-polish` and is ready for its focused Studio and multiplayer QA pass.
+The implementation and Studio QA for UI-01 through UI-03 has been verified by the project owner. UI-04 is implemented on branch `feat/ui-04-kill-feed-polish` and is ready for its focused Studio and multiplayer QA pass. UI-05 is implemented on branch `feat/ui-05-streak-presentation`; UI Labs and Play Mode QA remain pending.
 
 | Task | Status | Implementation summary |
 | --- | --- | --- |
@@ -12,6 +12,7 @@ The implementation and Studio QA for UI-01 through UI-03 has been verified by th
 | UI-02 Lobby HUD state | Done; Studio QA verified | Responsive lobby hint, Fusion state visibility gates, settings closure on non-play states, and preserved no-auto-modal behavior |
 | UI-03 Settings panel polish | Done; Studio QA verified | Modal backdrop, spring-smoothed sliders, responsive panel scale, validated SettingsStore writes, mouse-lock restoration, and scoped cleanup |
 | UI-04 Combat kill-feed polish | Implemented; Studio QA pending | Five-entry cap, right-aligned name/icon composition, subtle fade/slide transitions, truncation, and top-right safe placement |
+| UI-05 WANTED / streak presentation | Implemented; Studio QA pending | Persistent local WANTED badge, reusable milestone banner, tier colors, streak-ended feedback, and compact safe-area layout |
 
 The implementation leaves `SettingsStore`'s public API and the gameplay, camera, weapon, audio, and remotes contracts unchanged.
 
@@ -72,10 +73,12 @@ src/ReplicatedStorage/UI/
 ├── Theme.luau                         shared colors, typography, spacing, and sizes
 ├── Components/                        pure reusable Fusion components
 │   ├── KillFeed.luau
-│   └── StatusCard.luau
+│   ├── StatusCard.luau
+│   └── StreakBanner.luau
 ├── Stories/                            UI Labs story modules
 │   ├── ArenaStatusCard.story.luau
-│   └── KillFeed.story.luau
+│   ├── KillFeed.story.luau
+│   └── StreakPresentation.story.luau
 └── RevolverArena.storybook.luau        storybook grouping module
 ```
 
@@ -134,6 +137,26 @@ The default `card` variant is the grouped UI Labs presentation. The `runtime` va
 
 Numeric display values are clamped for presentation: capacity is at least one, ammo is non-negative and no greater than capacity, and streak is non-negative. This does not change authoritative gameplay state.
 
+The runtime variant also renders a `WantedBadge` below the streak value when its `wanted` prop is true. The badge is presentation-only; the server-owned `RevolverWanted` attribute remains the source of truth.
+
+The `StreakBanner` interface is:
+
+```luau
+StreakBanner(scope, {
+    parent = Instance,
+    title = Fusion.UsedAs<string>,
+    detail = Fusion.UsedAs<string>,
+    accentColor = Fusion.UsedAs<Color3>,
+    textTransparency = Fusion.UsedAs<number>,
+    backgroundTransparency = Fusion.UsedAs<number>,
+    visible = Fusion.UsedAs<boolean>,
+    position = UDim2?,
+    size = Fusion.UsedAs<UDim2>?,
+}) -> Frame
+```
+
+Runtime timing remains owned by `HUD.luau`: the component only renders reactive title/detail/color/transparency props. Milestone colors use `Theme.StreakTiers`; `Milestone` and `StreakEnded` payload validation remains in the runtime HUD.
+
 ## Story rules
 
 Story modules end in `.story.luau` and return a UI Labs Fusion story. Storybooks end in `.storybook.luau` and return a table containing `storyRoots`.
@@ -147,7 +170,7 @@ Fusion stories should:
 - Avoid `Players.LocalPlayer`, `PlayerGui`, remotes, server services, network calls, and permanent global connections.
 - Avoid manual destruction of instances created by the story scope; unmounting the story performs cleanup.
 
-The sample story uses `UILabs.Slider` for ammo, capacity, and streak, `UILabs.Boolean` for wanted state, and `UILabs.EnumList` for lobby/arena/dead state. UI Labs passes those controls to Fusion as reactive values.
+The sample stories use `UILabs.Slider` for ammo, capacity, and streak, `UILabs.Boolean` for wanted and compact layout state, and `UILabs.EnumList` for lobby/arena/dead or announcement modes. UI Labs passes those controls to Fusion as reactive values.
 
 ## UI development loop
 
@@ -168,6 +191,8 @@ The sample story uses `UILabs.Slider` for ammo, capacity, and streak, `UILabs.Bo
 | Ammo | Empty, full, and capacity changes never show invalid or clipped values |
 | Streak | Zero, normal, and high streak values remain readable |
 | Status | Lobby, arena, dead, wanted, and clear states have the intended text and color |
+| Milestones | HOT, GUNSLINGER, WANTED, OUTLAW, and LEGENDARY banners use the correct tier color and readable player/streak detail |
+| Wanted badge | Local WANTED badge appears only while wanted and does not overlap the banner, kill feed, or crosshair |
 | Kill feed | Zero, one, five, and rapid entries; long names truncate cleanly; expiry removes entries; center aim remains unobstructed |
 | Layout | Default and compact viewport sizes have no overlap, clipping, or unreadable text |
 | Lifecycle | Story reload and unmount remove old instances and reactive work |

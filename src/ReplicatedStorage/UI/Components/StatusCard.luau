@@ -102,6 +102,34 @@ local function StatusCard(scope: Scope, props: StatusCardProps): Frame
 			TextSize = 22,
 			TextXAlignment = Enum.TextXAlignment.Right,
 		},
+		scope:New "TextLabel" {
+			Name = "WantedBadge",
+			AnchorPoint = Vector2.new(1, 0),
+			Position = UDim2.new(1, -Theme.Layout.HudMargin, 0, Theme.Layout.WantedBadgeTopOffset),
+			Size = UDim2.fromOffset(Theme.Layout.WantedBadgeWidth, Theme.Layout.WantedBadgeHeight),
+			BackgroundColor3 = Theme.Colors.Danger,
+			BackgroundTransparency = 0.16,
+			BorderSizePixel = 0,
+			Font = Theme.Fonts.Bold,
+			Text = "WANTED",
+			TextColor3 = Theme.Colors.Text,
+			TextSize = 13,
+			TextStrokeTransparency = 0.55,
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextYAlignment = Enum.TextYAlignment.Center,
+			Visible = props.wanted,
+			ZIndex = 4,
+			[Fusion.Children] = {
+				scope:New "UICorner" {
+					CornerRadius = UDim.new(0, 6),
+				},
+				scope:New "UIStroke" {
+					Color = Theme.Colors.Accent,
+					Thickness = 1,
+					Transparency = 0.25,
+				},
+			},
+		},
 	} else {
 		scope:New "UICorner" {
 			CornerRadius = UDim.new(0, 8),
