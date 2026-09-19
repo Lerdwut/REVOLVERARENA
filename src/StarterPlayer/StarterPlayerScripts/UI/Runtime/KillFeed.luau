@@ -1,18 +1,22 @@
 --!strict
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Workspace = game:GetService("Workspace")
 
 local Fusion = require(ReplicatedStorage:WaitForChild("Packages"):WaitForChild("Fusion"))
 local Theme = require(ReplicatedStorage:WaitForChild("UI"):WaitForChild("Theme"))
+local KillFeedView = require(ReplicatedStorage:WaitForChild("UI"):WaitForChild("Components"):WaitForChild("KillFeed"))
 local RuntimeState = require(script.Parent:WaitForChild("RuntimeState"))
 
 type Entry = {
 	id: number,
-	layoutOrder: number,
-	text: string,
+	sequence: number,
+	order: number,
 	background: Fusion.Value<number>,
 	textTransparency: Fusion.Value<number>,
+	strokeTransparency: Fusion.Value<number>,
+	offset: Fusion.Value<number>,
+	killerName: string,
+	victimName: string,
 }
 
 local KillFeed = {}
@@ -29,53 +33,11 @@ function KillFeed.mount(
 		alive = false
 	end)
 
-	local renderedEntries = scope:ForPairs(entries, function(use, entryScope, key, entry)
-		local background = entryScope:Tween(entry.background, TweenInfo.new(
-			0.14,
-			Enum.EasingStyle.Quad,
-			Enum.EasingDirection.Out
-		))
-		local textTransparency = entryScope:Tween(entry.textTransparency, TweenInfo.new(
-			0.14,
-			Enum.EasingStyle.Quad,
-			Enum.EasingDirection.Out
-		))
-
-		return key, entryScope:New "TextLabel" {
-			Name = "Kill",
-			Size = UDim2.fromOffset(340, 25),
-			BackgroundColor3 = Theme.Colors.KillFeedBackground,
-			BackgroundTransparency = background,
-			BorderSizePixel = 0,
-			Font = Theme.Fonts.Semibold,
-			Text = entry.text,
-			TextColor3 = Theme.Colors.KillFeedText,
-			TextSize = 15,
-			TextStrokeTransparency = 0.75,
-			TextTransparency = textTransparency,
-			TextTruncate = Enum.TextTruncate.AtEnd,
-			TextXAlignment = Enum.TextXAlignment.Right,
-			LayoutOrder = entry.layoutOrder,
-		}
-	end)
-
-	local frame = scope:New "Frame" {
-		Name = "KillFeed",
-		AnchorPoint = Vector2.new(1, 0),
-		Position = UDim2.new(1, -Theme.Layout.HudMargin, 0, 107),
-		Size = UDim2.fromOffset(360, 150),
-		BackgroundTransparency = 1,
-		Visible = state.combatVisible,
-		[Fusion.Children] = {
-			scope:New "UIListLayout" {
-				Padding = UDim.new(0, 4),
-				HorizontalAlignment = Enum.HorizontalAlignment.Right,
-				SortOrder = Enum.SortOrder.LayoutOrder,
-				VerticalAlignment = Enum.VerticalAlignment.Top,
-			},
-			renderedEntries,
-		},
-	}
+	KillFeedView.mount(scope, {
+		parent = parent,
+		entries = entries,
+		visible = state.combatVisible,
+	})
 
 	local function contains(entry: Entry): boolean
 		return Fusion.peek(entries)[entry.id] == entry
@@ -94,25 +56,29 @@ function KillFeed.mount(
 		nextId += 1
 		local entry: Entry = {
 			id = nextId,
-			layoutOrder = math.floor(Workspace:GetServerTimeNow() * 100),
-			text = string.format("%s   [REVOLVER]   %s", killerName, victimName),
+			sequence = nextId,
+			order = -nextId,
 			background = scope:Value(1),
 			textTransparency = scope:Value(1),
+			strokeTransparency = scope:Value(1),
+			offset = scope:Value(14),
+			killerName = killerName,
+			victimName = victimName,
 		}
 
 		local nextEntries = table.clone(Fusion.peek(entries))
 		nextEntries[entry.id] = entry
 		local count = 0
 		local oldestId: number? = nil
-		local oldestOrder = math.huge
+		local oldestSequence = math.huge
 		for id, candidate in nextEntries do
 			count += 1
-			if candidate.layoutOrder < oldestOrder then
-				oldestOrder = candidate.layoutOrder
+			if candidate.sequence < oldestSequence then
+				oldestSequence = candidate.sequence
 				oldestId = id
 			end
 		end
-		if count > 5 and oldestId ~= nil then
+		if count > Theme.Layout.KillFeedMaxEntries and oldestId ~= nil then
 			nextEntries[oldestId] = nil
 		end
 		entries:set(nextEntries)
@@ -121,6 +87,8 @@ function KillFeed.mount(
 			if alive and contains(entry) then
 				entry.background:set(0.28)
 				entry.textTransparency:set(0)
+				entry.strokeTransparency:set(0.62)
+				entry.offset:set(0)
 			end
 		end)
 
@@ -130,7 +98,9 @@ function KillFeed.mount(
 			end
 			entry.background:set(1)
 			entry.textTransparency:set(1)
-			task.delay(0.55, function()
+			entry.strokeTransparency:set(1)
+			entry.offset:set(14)
+			task.delay(0.3, function()
 				if not alive or not contains(entry) then
 					return
 				end

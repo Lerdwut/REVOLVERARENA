@@ -2,15 +2,16 @@
 
 This guide covers the reusable Fusion UI layer, the single Fusion-owned runtime UI root, and the UI Labs storybook workflow for RevolverArena. Runtime HUD, lobby, scoreboard, settings, transition, kill-feed, and wanted-marker presentation is composed by `StarterPlayerScripts/UI/UIController.client.luau`; the gameplay and settings contracts it observes remain outside the UI layer.
 
-## UI-01–UI-03 status
+## UI-01–UI-04 status
 
-The implementation work for the first three UI/UX tasks is complete on branch `feat/ui-01-03-polish`. The remaining status is Roblox Studio Play Mode visual and interaction QA.
+The implementation and Studio QA for UI-01 through UI-03 has been verified by the project owner. UI-04 is implemented on branch `feat/ui-04-kill-feed-polish` and is ready for its focused Studio and multiplayer QA pass.
 
 | Task | Status | Implementation summary |
 | --- | --- | --- |
-| UI-01 Combat HUD cleanup | Implemented; Studio QA pending | Shared HUD layout tokens, readable ammo/streak/roll presentation, kill-feed truncation, safe margins, and hotbar re-application after respawn |
-| UI-02 Lobby HUD state | Implemented; Studio QA pending | Responsive lobby hint, Fusion state visibility gates, settings closure on non-play states, and preserved no-auto-modal behavior |
-| UI-03 Settings panel polish | Implemented; Studio QA pending | Modal backdrop, spring-smoothed sliders, responsive panel scale, validated SettingsStore writes, mouse-lock restoration, and scoped cleanup |
+| UI-01 Combat HUD cleanup | Done; Studio QA verified | Shared HUD layout tokens, readable ammo/streak/roll presentation, kill-feed truncation, safe margins, and hotbar re-application after respawn |
+| UI-02 Lobby HUD state | Done; Studio QA verified | Responsive lobby hint, Fusion state visibility gates, settings closure on non-play states, and preserved no-auto-modal behavior |
+| UI-03 Settings panel polish | Done; Studio QA verified | Modal backdrop, spring-smoothed sliders, responsive panel scale, validated SettingsStore writes, mouse-lock restoration, and scoped cleanup |
+| UI-04 Combat kill-feed polish | Implemented; Studio QA pending | Five-entry cap, right-aligned name/icon composition, subtle fade/slide transitions, truncation, and top-right safe placement |
 
 The implementation leaves `SettingsStore`'s public API and the gameplay, camera, weapon, audio, and remotes contracts unchanged.
 
@@ -70,9 +71,11 @@ Rojo owns the mapped source tree. Do not copy the preview instances from UI Labs
 src/ReplicatedStorage/UI/
 ├── Theme.luau                         shared colors, typography, spacing, and sizes
 ├── Components/                        pure reusable Fusion components
+│   ├── KillFeed.luau
 │   └── StatusCard.luau
 ├── Stories/                            UI Labs story modules
-│   └── ArenaStatusCard.story.luau
+│   ├── ArenaStatusCard.story.luau
+│   └── KillFeed.story.luau
 └── RevolverArena.storybook.luau        storybook grouping module
 ```
 
@@ -165,6 +168,7 @@ The sample story uses `UILabs.Slider` for ammo, capacity, and streak, `UILabs.Bo
 | Ammo | Empty, full, and capacity changes never show invalid or clipped values |
 | Streak | Zero, normal, and high streak values remain readable |
 | Status | Lobby, arena, dead, wanted, and clear states have the intended text and color |
+| Kill feed | Zero, one, five, and rapid entries; long names truncate cleanly; expiry removes entries; center aim remains unobstructed |
 | Layout | Default and compact viewport sizes have no overlap, clipping, or unreadable text |
 | Lifecycle | Story reload and unmount remove old instances and reactive work |
 | Runtime | The single Fusion root owns the current `PlayerGui` interfaces and inputs without duplicate ScreenGuis or changed gameplay contracts |
